@@ -1,0 +1,31 @@
+{
+  "selected_model": "ffnn_training_pool_ensemble_ens3_compact_weight_pca6_tanh_h8x4_a1_median",
+  "purpose": "Final local model trained on all observed P1-P4 data for teacher hidden testing.",
+  "selected_uses_rider_weight": true,
+  "input_feature_note": "Selected FFNN feature columns include rider_weight_kg.",
+  "n_training_pool_runs": 72,
+  "n_training_pool_windows": 873,
+  "training_pool_fit_metrics": {
+    "run_mae_bar": 0.22574323980702576,
+    "run_rmse_bar": 0.2829196548468837,
+    "run_bias_bar": 0.002869908710704595,
+    "run_max_abs_error_bar": 0.7131633314956107,
+    "run_error_std_bar": 0.1705389128032294,
+    "group_mae_std_bar": 0.025264680564249353,
+    "bike_mae_std_bar": 0.11293850391294398,
+    "nearest_level_accuracy": 0.6527777777777778,
+    "nearest_level_macro_f1": 0.5023360114814388,
+    "n_runs": 72,
+    "n_windows": 873
+  },
+  "cv_metrics_should_be_reported_for_generalization": {
+    "score": 0.3888593068689596,
+    "mae_bar": 0.2900289414960125,
+    "rmse_bar": 0.3879874584053013,
+    "bias_bar": 0.030783607127798658,
+    "max_abs_error_bar": 1.121292711605899,
+    "nearest_level_accuracy": 0.5972222222222222,
+    "nearest_level_macro_f1": 0.4656210356360282
+  },
+  "model_file": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\models\\training_pool_ffnn_final_model.pkl"
+}

@@ -1,0 +1,19 @@
+{
+  "scope": "All observed G01-G06 P1-P4 runs are local training data.",
+  "n_labeled_runs": 72,
+  "n_groups": 6,
+  "n_bikes": 3,
+  "n_raw_files": 144,
+  "source_status_counts": [
+    {
+      "source": "phyphox",
+      "parse_status": "ok",
+      "count": 72
+    },
+    {
+      "source": "sagemotion",
+      "parse_status": "ok",
+      "count": 72
+    }
+  ]
+}

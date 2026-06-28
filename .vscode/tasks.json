@@ -1,0 +1,84 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Training Pool 00 Check Environment",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\00_check_environment.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Training Pool 01 Build Labels + Inventory",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\01_build_labels_inventory.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Training Pool 02 Extract Window Features",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\02_extract_window_features.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Training Pool 03 Make EDA Figures",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\03_make_eda_figures.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": []
+    },
+    {
+      "label": "Training Pool 04 Group-CV Model Selection",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\04_group_cv_model_selection.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Training Pool 05 Train Final Model",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\05_train_final_model.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
+      "label": "Training Pool 06 Check Outputs",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\06_check_outputs.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Training Pool 07 Teacher Review Checks",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\07_teacher_review_checks.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
+      "label": "Training Pool Run Full Pipeline",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\run_all_training_pool.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "build"
+    }
+  ]
+}

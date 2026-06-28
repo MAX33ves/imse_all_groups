@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Local run logs and transient state
+06_reproducible_pipeline/logs/
+obsidian/.obsidian/workspace.json
+
+# Local environments
+.venv/
+venv/
+env/
+
+# Raw data should be stored next to the repository, not committed here.
+Measurement_Campaign/
+../Measurement_Campaign/
+
+# Packaging artifacts
+github_upload/
+*.zip

@@ -1,0 +1,16 @@
+{
+  "n_labeled_runs": 72,
+  "n_window_rows": 873,
+  "n_active_window_rows": 72,
+  "n_input_features": 132,
+  "window_seconds": 1.0,
+  "overlap": 0.5,
+  "cleaning_steps": [
+    "convert sensor columns to numeric",
+    "replace inf with NaN",
+    "interpolate missing signal values",
+    "fill remaining missing values with median",
+    "use acceleration magnitude and gyro magnitude",
+    "band-pass filter when sample rate allows"
+  ]
+}

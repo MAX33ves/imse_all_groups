@@ -1,0 +1,8 @@
+check,status,evidence,implication
+label coverage,pass,"72 labeled runs across 6 groups, 3 bike types.",The local training pool matches the stated 72-run design.
+raw file coverage,pass,72 Sagemotion CSV and 72 PhyPhox XLS files parse successfully.,"Raw files are present; current model uses Sagemotion only, so PhyPhox needs an explicit scope note."
+feature table finite values,pass,"873 window rows, 0 NaN cells, 0 infinite numeric cells.",No actual CV leakage from full-data median filling was observed in the current extracted feature table.
+active-window duration,pass,max |active_duration_s - table_ride_time_s| = 0.000000 s.,The crop length follows Measurement Details exactly; start location is still energy-based and should be described as an assumption.
+sample rate consistency,pass,sample_rate_hz min/median/max = 100.0/100.0/100.0.,A fixed 1 s window corresponds to 100 samples for every run.
+selected CV recomputation,pass,"MAE=0.290 bar, RMSE=0.388 bar, bias=0.031 bar over 72 run predictions.",The report metrics are reproducible from the selected CV prediction table.
+rider-weight direct target correlation,caveat,global Spearman=0.011; selected model uses rider_weight_kg=True.,"Weight is physically justified as load context, but the current data does not prove a strong direct pressure correlation."

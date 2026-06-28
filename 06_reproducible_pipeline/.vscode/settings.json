@@ -1,0 +1,5 @@
+{
+  "python.defaultInterpreterPath": "python",
+  "terminal.integrated.defaultProfile.windows": "PowerShell",
+  "files.encoding": "utf8"
+}

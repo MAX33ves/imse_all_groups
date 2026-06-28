@@ -1,0 +1,4 @@
+review_role,model_name,feature_space,n_features_in,pca_components,hidden_layers,alpha,cv_selection_score,cv_run_mae_bar,cv_run_rmse_bar,cv_run_bias_bar,cv_run_max_abs_error_bar,cv_nearest_level_accuracy
+best_ffnn_without_weight,ffnn_training_pool_ensemble_ens3_compact_pca6_tanh_h8x4_a1_median,compact,27,6.0,"(8, 4)",1.0,0.3804940974880136,0.2857903788712224,0.3830846740236561,0.0302084209583085,1.0494290585624722,0.5694444444444444
+best_ffnn_with_weight,ffnn_training_pool_ensemble_ens3_compact_weight_pca6_tanh_h8x4_a1_median,compact_weight,28,6.0,"(8, 4)",1.0,0.3888593068689596,0.2900289414960125,0.3879874584053013,0.0307836071277986,1.121292711605899,0.5972222222222222
+selected_model,ffnn_training_pool_ensemble_ens3_compact_weight_pca6_tanh_h8x4_a1_median,compact_weight,28,6.0,"(8, 4)",1.0,0.3888593068689596,0.2900289414960125,0.3879874584053013,0.0307836071277986,1.121292711605899,0.5972222222222222

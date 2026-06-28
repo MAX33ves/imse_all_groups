@@ -1,0 +1,33 @@
+{
+  "n_labeled_runs": 72,
+  "n_windows": 873,
+  "figure_paths": [
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_01_pressure_design.png",
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_02_counts.png",
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_03_pca_all_local_data.png",
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_04_feature_vs_pressure.png",
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_05_feature_target_correlation.png",
+    "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\figures_training_pool_eda\\training_pool_06_final_input_correlation_matrix.png"
+  ],
+  "pca_policy": "EDA PCA is fitted on all local P1-P4 training-pool data.",
+  "feature_explanation": {
+    "analysis_grain": "run_level_median",
+    "n_runs": 72,
+    "n_candidate_inputs": 132,
+    "n_final_inputs": 28,
+    "final_feature_space": "compact_weight",
+    "uses_rider_weight": true,
+    "top_final_inputs_by_abs_spearman": [
+      "bike_FAT",
+      "acc_spectral_centroid_mean",
+      "acc_band_15_30_power_mean",
+      "acc_band_3_8_power_mean",
+      "acc_energy_per_s_mean",
+      "acc_spectral_entropy_mean",
+      "acc_p95_abs_mean",
+      "acc_ptp_mean"
+    ],
+    "n_high_redundancy_pairs_abs_spearman_ge_0p85": 21,
+    "caveat": "Correlation is descriptive evidence only; final model choice is still judged by leave-one-group-out CV."
+  }
+}

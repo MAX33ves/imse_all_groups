@@ -1,0 +1,145 @@
+file,source,size_bytes,parse_status,group,bike,p_number,run_id,has_label,pressure_bar,dataset_role,rider_weight_kg,table_ride_time_s,n_rows,n_columns,duration_s,sample_rate_hz,null_cells
+G01\Phyphox Data\G1_Fat_P1.xls,phyphox,152576,ok,G01,FAT,P1,G01_FAT_P1,True,0.4,training_pool,91.0,7.5,,,,,
+G01\Phyphox Data\G1_Fat_P2.xls,phyphox,170496,ok,G01,FAT,P2,G01_FAT_P2,True,0.8,training_pool,91.0,7.4,,,,,
+G01\Phyphox Data\G1_FAT_P3.xls,phyphox,157184,ok,G01,FAT,P3,G01_FAT_P3,True,0.8,training_pool,100.0,5.74,,,,,
+G01\Phyphox Data\G1_FAT_P4.xls,phyphox,184320,ok,G01,FAT,P4,G01_FAT_P4,True,0.6,training_pool,100.0,6.31,,,,,
+G01\Phyphox Data\G1_ISY_P1.xls,phyphox,182272,ok,G01,ISY,P1,G01_ISY_P1,True,1.0,training_pool,91.0,8.25,,,,,
+G01\Phyphox Data\G1_ISY_P2.xls,phyphox,171520,ok,G01,ISY,P2,G01_ISY_P2,True,3.0,training_pool,91.0,7.37,,,,,
+G01\Phyphox Data\G1_ISY_P3.xls,phyphox,174080,ok,G01,ISY,P3,G01_ISY_P3,True,3.0,training_pool,100.0,6.19,,,,,
+G01\Phyphox Data\G1_ISY_P4.xls,phyphox,166400,ok,G01,ISY,P4,G01_ISY_P4,True,2.0,training_pool,100.0,5.57,,,,,
+G01\Phyphox Data\G1_MTB_P1.xls,phyphox,165376,ok,G01,MTB,P1,G01_MTB_P1,True,2.0,training_pool,91.0,7.32,,,,,
+G01\Phyphox Data\G1_MTB_P2.xls,phyphox,159744,ok,G01,MTB,P2,G01_MTB_P2,True,3.0,training_pool,91.0,6.88,,,,,
+G01\Phyphox Data\G1_MTB_P3.xls,phyphox,139264,ok,G01,MTB,P3,G01_MTB_P3,True,3.0,training_pool,100.0,6.17,,,,,
+G01\Phyphox Data\G1_MTB_P4.xls,phyphox,131072,ok,G01,MTB,P4,G01_MTB_P4,True,1.0,training_pool,100.0,4.96,,,,,
+G01\Sagemotion Sensor Data\g1_fat_p1.csv,sagemotion,473606,ok,G01,FAT,P1,G01_FAT_P1,True,0.4,training_pool,91.0,7.5,903.0,32.0,9.02,100.0,0.0
+G01\Sagemotion Sensor Data\g1_fat_p2.csv,sagemotion,547362,ok,G01,FAT,P2,G01_FAT_P2,True,0.8,training_pool,91.0,7.4,1038.0,32.0,10.369,100.0,0.0
+G01\Sagemotion Sensor Data\G1_FAT_P3.csv,sagemotion,1338930,ok,G01,FAT,P3,G01_FAT_P3,True,0.8,training_pool,100.0,5.74,2531.0,32.0,25.302,100.0,0.0
+G01\Sagemotion Sensor Data\G1_FAT_P4.csv,sagemotion,648348,ok,G01,FAT,P4,G01_FAT_P4,True,0.6,training_pool,100.0,6.31,1234.0,32.0,12.33,100.0,0.0
+G01\Sagemotion Sensor Data\g1_isy_p1.csv,sagemotion,539926,ok,G01,ISY,P1,G01_ISY_P1,True,1.0,training_pool,91.0,8.25,1134.0,32.0,11.328,100.0,0.0
+G01\Sagemotion Sensor Data\g1_isy_p2.csv,sagemotion,503292,ok,G01,ISY,P2,G01_ISY_P2,True,3.0,training_pool,91.0,7.37,1062.0,32.0,10.61,100.0,0.0
+G01\Sagemotion Sensor Data\G1_ISY_P3.csv,sagemotion,601250,ok,G01,ISY,P3,G01_ISY_P3,True,3.0,training_pool,100.0,6.19,1258.0,32.0,12.571,100.0,0.0
+G01\Sagemotion Sensor Data\G1_ISY_P4.csv,sagemotion,551661,ok,G01,ISY,P4,G01_ISY_P4,True,2.0,training_pool,100.0,5.57,1160.0,32.0,11.591,100.0,0.0
+G01\Sagemotion Sensor Data\g1_mtb_p1.csv,sagemotion,581747,ok,G01,MTB,P1,G01_MTB_P1,True,2.0,training_pool,91.0,7.32,1098.0,32.0,10.969,100.0,0.0
+G01\Sagemotion Sensor Data\g1_mtb_p2.csv,sagemotion,507152,ok,G01,MTB,P2,G01_MTB_P2,True,3.0,training_pool,91.0,6.88,954.0,32.0,9.53,100.0,0.0
+G01\Sagemotion Sensor Data\G1_MTB_P3.csv,sagemotion,475108,ok,G01,MTB,P3,G01_MTB_P3,True,3.0,training_pool,100.0,6.17,896.0,32.0,8.95,100.0,0.0
+G01\Sagemotion Sensor Data\G1_MTB_P4.csv,sagemotion,400728,ok,G01,MTB,P4,G01_MTB_P4,True,1.0,training_pool,100.0,4.96,755.0,32.0,7.541,100.0,0.0
+G02\PhyPhox Data\G2_FAT_p1.xls,phyphox,273408,ok,G02,FAT,P1,G02_FAT_P1,True,0.4,training_pool,63.0,4.75,,,,,
+G02\PhyPhox Data\G2_FAT_p2.xls,phyphox,291328,ok,G02,FAT,P2,G02_FAT_P2,True,0.8,training_pool,63.0,5.8,,,,,
+G02\PhyPhox Data\G2_FAT_P3.xls,phyphox,175104,ok,G02,FAT,P3,G02_FAT_P3,True,0.8,training_pool,106.0,6.04,,,,,
+G02\PhyPhox Data\G2_FAT_P4.xls,phyphox,188416,ok,G02,FAT,P4,G02_FAT_P4,True,0.6,training_pool,106.0,6.41,,,,,
+G02\PhyPhox Data\G2_ISY_p1.xls,phyphox,346112,ok,G02,ISY,P1,G02_ISY_P1,True,1.0,training_pool,63.0,6.7,,,,,
+G02\PhyPhox Data\G2_ISY_p2.xls,phyphox,274432,ok,G02,ISY,P2,G02_ISY_P2,True,3.0,training_pool,63.0,6.1,,,,,
+G02\PhyPhox Data\G2_ISY_P3.xls,phyphox,169472,ok,G02,ISY,P3,G02_ISY_P3,True,3.0,training_pool,106.0,5.31,,,,,
+G02\PhyPhox Data\G2_ISY_P4.xls,phyphox,172032,ok,G02,ISY,P4,G02_ISY_P4,True,2.0,training_pool,106.0,5.64,,,,,
+G02\PhyPhox Data\G2_MTB_p1.xls,phyphox,289792,ok,G02,MTB,P1,G02_MTB_P1,True,2.0,training_pool,63.0,5.4,,,,,
+G02\PhyPhox Data\G2_MTB_p2.xls,phyphox,257536,ok,G02,MTB,P2,G02_MTB_P2,True,3.0,training_pool,63.0,5.7,,,,,
+G02\PhyPhox Data\G2_MTB_P3.xls,phyphox,128512,ok,G02,MTB,P3,G02_MTB_P3,True,3.0,training_pool,106.0,4.9,,,,,
+G02\PhyPhox Data\G2_MTB_P4.xls,phyphox,185856,ok,G02,MTB,P4,G02_MTB_P4,True,1.0,training_pool,106.0,5.15,,,,,
+G02\Sagemotion Sensor Data\g2_fat_p1.csv,sagemotion,380170,ok,G02,FAT,P1,G02_FAT_P1,True,0.4,training_pool,63.0,4.75,723.0,32.0,7.222,100.0,0.0
+G02\Sagemotion Sensor Data\g2_fat_p2.csv,sagemotion,453901,ok,G02,FAT,P2,G02_FAT_P2,True,0.8,training_pool,63.0,5.8,861.0,32.0,8.6,100.0,0.0
+G02\Sagemotion Sensor Data\G2_FAT_P3.csv,sagemotion,2090607,ok,G02,FAT,P3,G02_FAT_P3,True,0.8,training_pool,106.0,6.04,3950.0,32.0,39.491,100.0,0.0
+G02\Sagemotion Sensor Data\G2_FAT_P4.csv,sagemotion,658024,ok,G02,FAT,P4,G02_FAT_P4,True,0.6,training_pool,106.0,6.41,1252.0,32.0,12.51,100.0,0.0
+G02\Sagemotion Sensor Data\g2_isy_p1.csv,sagemotion,456322,ok,G02,ISY,P1,G02_ISY_P1,True,1.0,training_pool,63.0,6.7,957.0,32.0,9.562,100.0,0.0
+G02\Sagemotion Sensor Data\g2_isy_p2.csv,sagemotion,433196,ok,G02,ISY,P2,G02_ISY_P2,True,3.0,training_pool,63.0,6.1,914.0,32.0,9.13,100.0,0.0
+G02\Sagemotion Sensor Data\G2_ISY_P3.csv,sagemotion,590010,ok,G02,ISY,P3,G02_ISY_P3,True,3.0,training_pool,106.0,5.31,1235.0,32.0,12.34,100.0,0.0
+G02\Sagemotion Sensor Data\G2_ISY_P4.csv,sagemotion,670422,ok,G02,ISY,P4,G02_ISY_P4,True,2.0,training_pool,106.0,5.64,1410.0,32.0,14.091,100.0,0.0
+G02\Sagemotion Sensor Data\g2_mtb_p1.csv,sagemotion,506159,ok,G02,MTB,P1,G02_MTB_P1,True,2.0,training_pool,63.0,5.4,956.0,32.0,9.55,100.0,0.0
+G02\Sagemotion Sensor Data\g2_mtb_p2.csv,sagemotion,400545,ok,G02,MTB,P2,G02_MTB_P2,True,3.0,training_pool,63.0,5.7,755.0,32.0,7.54,100.0,0.0
+G02\Sagemotion Sensor Data\G2_MTB_P3.csv,sagemotion,464265,ok,G02,MTB,P3,G02_MTB_P3,True,3.0,training_pool,106.0,4.9,876.0,32.0,8.749,100.0,0.0
+G02\Sagemotion Sensor Data\G2_MTB_P4.csv,sagemotion,408687,ok,G02,MTB,P4,G02_MTB_P4,True,1.0,training_pool,106.0,5.15,770.0,32.0,7.69,100.0,0.0
+G03\PhyPhox Data\G3_FAT_P1.xls,phyphox,342528,ok,G03,FAT,P1,G03_FAT_P1,True,0.4,training_pool,120.0,8.13,,,,,
+G03\PhyPhox Data\G3_FAT_P2.xls,phyphox,280064,ok,G03,FAT,P2,G03_FAT_P2,True,0.8,training_pool,120.0,7.32,,,,,
+G03\PhyPhox Data\G3_FAT_P3.xls,phyphox,178688,ok,G03,FAT,P3,G03_FAT_P3,True,0.8,training_pool,109.0,6.0,,,,,
+G03\PhyPhox Data\G3_FAT_P4.xls,phyphox,183808,ok,G03,FAT,P4,G03_FAT_P4,True,0.6,training_pool,109.0,6.45,,,,,
+G03\PhyPhox Data\G3_ISY_P1.xls,phyphox,296960,ok,G03,ISY,P1,G03_ISY_P1,True,1.0,training_pool,120.0,7.66,,,,,
+G03\PhyPhox Data\G3_ISY_P2.xls,phyphox,334848,ok,G03,ISY,P2,G03_ISY_P2,True,3.0,training_pool,120.0,7.92,,,,,
+G03\PhyPhox Data\G3_ISY_P3.xls,phyphox,167936,ok,G03,ISY,P3,G03_ISY_P3,True,3.0,training_pool,109.0,5.3,,,,,
+G03\PhyPhox Data\G3_ISY_P4.xls,phyphox,171008,ok,G03,ISY,P4,G03_ISY_P4,True,2.0,training_pool,109.0,5.36,,,,,
+G03\PhyPhox Data\G3_MTB_P1.xls,phyphox,281600,ok,G03,MTB,P1,G03_MTB_P1,True,2.0,training_pool,120.0,7.01,,,,,
+G03\PhyPhox Data\G3_MTB_P2.xls,phyphox,281088,ok,G03,MTB,P2,G03_MTB_P2,True,3.0,training_pool,120.0,6.89,,,,,
+G03\PhyPhox Data\G3_MTB_P3.xls,phyphox,122880,ok,G03,MTB,P3,G03_MTB_P3,True,3.0,training_pool,109.0,4.5,,,,,
+G03\PhyPhox Data\G3_MTB_P4.xls,phyphox,140800,ok,G03,MTB,P4,G03_MTB_P4,True,1.0,training_pool,109.0,6.0,,,,,
+G03\Sagemotion Sensor Data\g3_fat_p1.csv,sagemotion,649501,ok,G03,FAT,P1,G03_FAT_P1,True,0.4,training_pool,120.0,8.13,1235.0,32.0,12.34,100.0,0.0
+G03\Sagemotion Sensor Data\g3_fat_p2.csv,sagemotion,537775,ok,G03,FAT,P2,G03_FAT_P2,True,0.8,training_pool,120.0,7.32,1022.0,32.0,10.208,100.0,0.0
+G03\Sagemotion Sensor Data\G3_FAT_P3.csv,sagemotion,656292,ok,G03,FAT,P3,G03_FAT_P3,True,0.8,training_pool,109.0,6.0,1249.0,32.0,12.481,100.0,0.0
+G03\Sagemotion Sensor Data\G3_FAT_P4.csv,sagemotion,792970,ok,G03,FAT,P4,G03_FAT_P4,True,0.6,training_pool,109.0,6.45,1506.0,32.0,15.053,100.0,0.0
+G03\Sagemotion Sensor Data\g3_isy_p1.csv,sagemotion,556049,ok,G03,ISY,P1,G03_ISY_P1,True,1.0,training_pool,120.0,7.66,1171.0,32.0,11.698,100.0,0.0
+G03\Sagemotion Sensor Data\g3_isy_p2.csv,sagemotion,582358,ok,G03,ISY,P2,G03_ISY_P2,True,3.0,training_pool,120.0,7.92,1227.0,32.0,12.259,100.0,0.0
+G03\Sagemotion Sensor Data\G3_ISY_P3.csv,sagemotion,574269,ok,G03,ISY,P3,G03_ISY_P3,True,3.0,training_pool,109.0,5.3,1201.0,32.0,12.001,100.0,0.0
+G03\Sagemotion Sensor Data\G3_ISY_P4.csv,sagemotion,541056,ok,G03,ISY,P4,G03_ISY_P4,True,2.0,training_pool,109.0,5.36,1138.0,32.0,11.372,100.0,0.0
+G03\Sagemotion Sensor Data\g3_mtb_p1.csv,sagemotion,521110,ok,G03,MTB,P1,G03_MTB_P1,True,2.0,training_pool,120.0,7.01,977.0,32.0,9.759,100.0,0.0
+G03\Sagemotion Sensor Data\g3_mtb_p2.csv,sagemotion,567582,ok,G03,MTB,P2,G03_MTB_P2,True,3.0,training_pool,120.0,6.89,1068.0,32.0,10.669,100.0,0.0
+G03\Sagemotion Sensor Data\G3_MTB_P3.csv,sagemotion,400285,ok,G03,MTB,P3,G03_MTB_P3,True,3.0,training_pool,109.0,4.5,754.0,32.0,7.53,100.0,0.0
+G03\Sagemotion Sensor Data\G3_MTB_P4.csv,sagemotion,477025,ok,G03,MTB,P4,G03_MTB_P4,True,1.0,training_pool,109.0,6.0,900.0,32.0,8.991,100.0,0.0
+G04\PhyPhox Data\G4_FAT_P1.xls,phyphox,257024,ok,G04,FAT,P1,G04_FAT_P1,True,0.4,training_pool,73.0,6.59,,,,,
+G04\PhyPhox Data\G4_FAT_P2.xls,phyphox,252416,ok,G04,FAT,P2,G04_FAT_P2,True,0.8,training_pool,73.0,7.0,,,,,
+G04\PhyPhox Data\G4_FAT_P3.xls,phyphox,194048,ok,G04,FAT,P3,G04_FAT_P3,True,0.8,training_pool,75.0,6.34,,,,,
+G04\PhyPhox Data\G4_FAT_P4.xls,phyphox,228864,ok,G04,FAT,P4,G04_FAT_P4,True,0.6,training_pool,75.0,7.23,,,,,
+G04\PhyPhox Data\G4_ISY_P1.xls,phyphox,271360,ok,G04,ISY,P1,G04_ISY_P1,True,1.0,training_pool,73.0,7.08,,,,,
+G04\PhyPhox Data\G4_ISY_P2.xls,phyphox,247808,ok,G04,ISY,P2,G04_ISY_P2,True,3.0,training_pool,73.0,6.61,,,,,
+G04\PhyPhox Data\G4_ISY_P3.xls,phyphox,214016,ok,G04,ISY,P3,G04_ISY_P3,True,3.0,training_pool,75.0,6.03,,,,,
+G04\PhyPhox Data\G4_ISY_P4.xls,phyphox,184832,ok,G04,ISY,P4,G04_ISY_P4,True,2.0,training_pool,75.0,5.67,,,,,
+G04\PhyPhox Data\G4_MTB_P1.xls,phyphox,254976,ok,G04,MTB,P1,G04_MTB_P1,True,2.0,training_pool,73.0,6.15,,,,,
+G04\PhyPhox Data\G4_MTB_P2.xls,phyphox,251904,ok,G04,MTB,P2,G04_MTB_P2,True,3.0,training_pool,73.0,6.91,,,,,
+G04\PhyPhox Data\G4_MTB_P3.xls,phyphox,177152,ok,G04,MTB,P3,G04_MTB_P3,True,3.0,training_pool,75.0,5.68,,,,,
+G04\PhyPhox Data\G4_MTB_P4.xls,phyphox,191488,ok,G04,MTB,P4,G04_MTB_P4,True,1.0,training_pool,75.0,6.01,,,,,
+G04\Sagemotion Sensor Data\g4_fat_p1.csv,sagemotion,486366,ok,G04,FAT,P1,G04_FAT_P1,True,0.4,training_pool,73.0,6.59,925.0,32.0,9.24,100.0,0.0
+G04\Sagemotion Sensor Data\g4_fat_p2.csv,sagemotion,425094,ok,G04,FAT,P2,G04_FAT_P2,True,0.8,training_pool,73.0,7.0,808.0,32.0,8.072,100.0,0.0
+G04\Sagemotion Sensor Data\G4_FAT_P3.csv,sagemotion,675725,ok,G04,FAT,P3,G04_FAT_P3,True,0.8,training_pool,75.0,6.34,1284.0,32.0,12.83,100.0,0.0
+G04\Sagemotion Sensor Data\G4_FAT_P4.csv,sagemotion,701516,ok,G04,FAT,P4,G04_FAT_P4,True,0.6,training_pool,75.0,7.23,1334.0,32.0,13.331,100.0,0.0
+G04\Sagemotion Sensor Data\g4_isy_p1.csv,sagemotion,419897,ok,G04,ISY,P1,G04_ISY_P1,True,1.0,training_pool,73.0,7.08,880.0,32.0,8.79,100.0,0.0
+G04\Sagemotion Sensor Data\g4_isy_p2.csv,sagemotion,403270,ok,G04,ISY,P2,G04_ISY_P2,True,3.0,training_pool,73.0,6.61,852.0,32.0,8.51,100.0,0.0
+G04\Sagemotion Sensor Data\G4_ISY_P3.csv,sagemotion,744917,ok,G04,ISY,P3,G04_ISY_P3,True,3.0,training_pool,75.0,6.03,1562.0,32.0,15.612,100.0,0.0
+G04\Sagemotion Sensor Data\G4_ISY_P4.csv,sagemotion,657102,ok,G04,ISY,P4,G04_ISY_P4,True,2.0,training_pool,75.0,5.67,1381.0,32.0,13.801,100.0,0.0
+G04\Sagemotion Sensor Data\g4_mtb_p1.csv,sagemotion,486235,ok,G04,MTB,P1,G04_MTB_P1,True,2.0,training_pool,73.0,6.15,914.0,32.0,9.129,100.0,0.0
+G04\Sagemotion Sensor Data\g4_mtb_p2.csv,sagemotion,432052,ok,G04,MTB,P2,G04_MTB_P2,True,3.0,training_pool,73.0,6.91,815.0,32.0,8.141,100.0,0.0
+G04\Sagemotion Sensor Data\G4_MTB_P3.csv,sagemotion,669959,ok,G04,MTB,P3,G04_MTB_P3,True,3.0,training_pool,75.0,5.68,1260.0,32.0,12.589,100.0,0.0
+G04\Sagemotion Sensor Data\G4_MTB_P4.csv,sagemotion,645986,ok,G04,MTB,P4,G04_MTB_P4,True,1.0,training_pool,75.0,6.01,1214.0,32.0,12.132,100.0,0.0
+G05\PhyPhox Data\G5_FAT_P1.xls,phyphox,154112,ok,G05,FAT,P1,G05_FAT_P1,True,0.4,training_pool,63.0,5.24,,,,,
+G05\PhyPhox Data\G5_FAT_P2.xls,phyphox,171520,ok,G05,FAT,P2,G05_FAT_P2,True,0.8,training_pool,63.0,6.6,,,,,
+G05\PhyPhox Data\G5_FAT_P3.xls,phyphox,193536,ok,G05,FAT,P3,G05_FAT_P3,True,0.8,training_pool,79.0,6.05,,,,,
+G05\PhyPhox Data\G5_FAT_P4.xls,phyphox,215552,ok,G05,FAT,P4,G05_FAT_P4,True,0.6,training_pool,79.0,6.48,,,,,
+G05\PhyPhox Data\G5_ISY_P1.xls,phyphox,186880,ok,G05,ISY,P1,G05_ISY_P1,True,1.0,training_pool,63.0,7.07,,,,,
+G05\PhyPhox Data\G5_ISY_P2.xls,phyphox,173568,ok,G05,ISY,P2,G05_ISY_P2,True,3.0,training_pool,63.0,6.8,,,,,
+G05\PhyPhox Data\G5_ISY_P3.xls,phyphox,196096,ok,G05,ISY,P3,G05_ISY_P3,True,3.0,training_pool,79.0,6.03,,,,,
+G05\PhyPhox Data\G5_ISY_P4.xls,phyphox,168960,ok,G05,ISY,P4,G05_ISY_P4,True,2.0,training_pool,79.0,4.87,,,,,
+G05\PhyPhox Data\G5_MTB_P1.xls,phyphox,179712,ok,G05,MTB,P1,G05_MTB_P1,True,2.0,training_pool,63.0,6.21,,,,,
+G05\PhyPhox Data\G5_MTB_P2.xls,phyphox,162816,ok,G05,MTB,P2,G05_MTB_P2,True,3.0,training_pool,63.0,6.35,,,,,
+G05\PhyPhox Data\G5_MTB_P3.xls,phyphox,183296,ok,G05,MTB,P3,G05_MTB_P3,True,3.0,training_pool,79.0,5.48,,,,,
+G05\PhyPhox Data\G5_MTB_P4.xls,phyphox,174592,ok,G05,MTB,P4,G05_MTB_P4,True,1.0,training_pool,79.0,5.87,,,,,
+G05\Sagemotion Sensor Data\g5_fat_p1.csv,sagemotion,445344,ok,G05,FAT,P1,G05_FAT_P1,True,0.4,training_pool,63.0,5.24,849.0,32.0,8.481,100.0,0.0
+G05\Sagemotion Sensor Data\g5_fat_p2.csv,sagemotion,521915,ok,G05,FAT,P2,G05_FAT_P2,True,0.8,training_pool,63.0,6.6,992.0,32.0,9.91,100.0,0.0
+G05\Sagemotion Sensor Data\G5_FAT_P3.csv,sagemotion,681941,ok,G05,FAT,P3,G05_FAT_P3,True,0.8,training_pool,79.0,6.05,1297.0,32.0,12.96,100.0,0.0
+G05\Sagemotion Sensor Data\G5_FAT_P4.csv,sagemotion,902065,ok,G05,FAT,P4,G05_FAT_P4,True,0.6,training_pool,79.0,6.48,1716.0,32.0,17.15,100.0,0.0
+G05\Sagemotion Sensor Data\g5_isy_p1.csv,sagemotion,565217,ok,G05,ISY,P1,G05_ISY_P1,True,1.0,training_pool,63.0,7.07,1185.0,32.0,11.839,100.0,0.0
+G05\Sagemotion Sensor Data\g5_isy_p2.csv,sagemotion,451098,ok,G05,ISY,P2,G05_ISY_P2,True,3.0,training_pool,63.0,6.8,953.0,32.0,9.52,100.0,0.0
+G05\Sagemotion Sensor Data\G5_ISY_P3.csv,sagemotion,739394,ok,G05,ISY,P3,G05_ISY_P3,True,3.0,training_pool,79.0,6.03,1552.0,32.0,15.51,100.0,0.0
+G05\Sagemotion Sensor Data\G5_ISY_P4.csv,sagemotion,457088,ok,G05,ISY,P4,G05_ISY_P4,True,2.0,training_pool,79.0,4.87,963.0,32.0,9.619,100.0,0.0
+G05\Sagemotion Sensor Data\g5_mtb_p1.csv,sagemotion,484006,ok,G05,MTB,P1,G05_MTB_P1,True,2.0,training_pool,63.0,6.21,910.0,32.0,9.089,100.0,0.0
+G05\Sagemotion Sensor Data\g5_mtb_p2.csv,sagemotion,484641,ok,G05,MTB,P2,G05_MTB_P2,True,3.0,training_pool,63.0,6.35,911.0,32.0,9.101,100.0,0.0
+G05\Sagemotion Sensor Data\G5_MTB_P3.csv,sagemotion,738064,ok,G05,MTB,P3,G05_MTB_P3,True,3.0,training_pool,79.0,5.48,1389.0,32.0,13.88,100.0,0.0
+G05\Sagemotion Sensor Data\G5_MTB_P4.csv,sagemotion,629284,ok,G05,MTB,P4,G05_MTB_P4,True,1.0,training_pool,79.0,5.87,1183.0,32.0,11.82,100.0,0.0
+G06\PhyPhox Data\G06_FatBike_p1.xls,phyphox,179200,ok,G06,FAT,P1,G06_FAT_P1,True,0.4,training_pool,67.0,7.52,,,,,
+G06\PhyPhox Data\G06_FatBike_p2.xls,phyphox,163840,ok,G06,FAT,P2,G06_FAT_P2,True,0.8,training_pool,67.0,7.57,,,,,
+G06\PhyPhox Data\G06_ISY_p1.xls,phyphox,187392,ok,G06,ISY,P1,G06_ISY_P1,True,1.0,training_pool,67.0,7.6,,,,,
+G06\PhyPhox Data\G06_ISY_p2.xls,phyphox,174080,ok,G06,ISY,P2,G06_ISY_P2,True,3.0,training_pool,67.0,7.62,,,,,
+G06\PhyPhox Data\G06_MTB_p1.xls,phyphox,133632,ok,G06,MTB,P1,G06_MTB_P1,True,2.0,training_pool,67.0,5.38,,,,,
+G06\PhyPhox Data\G06_MTB_p2.xls,phyphox,155648,ok,G06,MTB,P2,G06_MTB_P2,True,3.0,training_pool,67.0,6.91,,,,,
+G06\PhyPhox Data\G6_FAT_P3.xls,phyphox,216576,ok,G06,FAT,P3,G06_FAT_P3,True,0.8,training_pool,82.0,6.96,,,,,
+G06\PhyPhox Data\G6_FAT_P4.xls,phyphox,205312,ok,G06,FAT,P4,G06_FAT_P4,True,0.6,training_pool,82.0,6.48,,,,,
+G06\PhyPhox Data\G6_ISY_P3.xls,phyphox,190464,ok,G06,ISY,P3,G06_ISY_P3,True,3.0,training_pool,82.0,6.38,,,,,
+G06\PhyPhox Data\G6_ISY_P4.xls,phyphox,173056,ok,G06,ISY,P4,G06_ISY_P4,True,2.0,training_pool,82.0,5.84,,,,,
+G06\PhyPhox Data\G6_MTB_P3.xls,phyphox,183296,ok,G06,MTB,P3,G06_MTB_P3,True,3.0,training_pool,82.0,5.67,,,,,
+G06\PhyPhox Data\G6_MTB_P4.xls,phyphox,166912,ok,G06,MTB,P4,G06_MTB_P4,True,1.0,training_pool,82.0,5.41,,,,,
+G06\Sagemotion Sensor Data\g6_fat_p1.csv,sagemotion,421406,ok,G06,FAT,P1,G06_FAT_P1,True,0.4,training_pool,67.0,7.52,802.0,32.0,8.011,100.0,0.0
+G06\Sagemotion Sensor Data\g6_fat_p2.csv,sagemotion,580657,ok,G06,FAT,P2,G06_FAT_P2,True,0.8,training_pool,67.0,7.57,1104.0,32.0,11.031,100.0,0.0
+G06\Sagemotion Sensor Data\G6_FAT_P3.csv,sagemotion,957201,ok,G06,FAT,P3,G06_FAT_P3,True,0.8,training_pool,82.0,6.96,1818.0,32.0,18.17,100.0,0.0
+G06\Sagemotion Sensor Data\G6_FAT_P4.csv,sagemotion,783829,ok,G06,FAT,P4,G06_FAT_P4,True,0.6,training_pool,82.0,6.48,1491.0,32.0,14.9,100.0,0.0
+G06\Sagemotion Sensor Data\g6_isy_p1.csv,sagemotion,482113,ok,G06,ISY,P1,G06_ISY_P1,True,1.0,training_pool,67.0,7.6,1009.0,32.0,10.079,100.0,0.0
+G06\Sagemotion Sensor Data\g6_isy_p2.csv,sagemotion,499893,ok,G06,ISY,P2,G06_ISY_P2,True,3.0,training_pool,67.0,7.62,1056.0,32.0,10.552,100.0,0.0
+G06\Sagemotion Sensor Data\G6_ISY_P3.csv,sagemotion,602946,ok,G06,ISY,P3,G06_ISY_P3,True,3.0,training_pool,82.0,6.38,1264.0,32.0,12.63,100.0,0.0
+G06\Sagemotion Sensor Data\G6_ISY_P4.csv,sagemotion,644783,ok,G06,ISY,P4,G06_ISY_P4,True,2.0,training_pool,82.0,5.84,1352.0,32.0,13.51,100.0,0.0
+G06\Sagemotion Sensor Data\g6_mtb_p1.csv,sagemotion,408587,ok,G06,MTB,P1,G06_MTB_P1,True,2.0,training_pool,67.0,5.38,767.0,32.0,7.662,100.0,0.0
+G06\Sagemotion Sensor Data\g6_mtb_p2.csv,sagemotion,515777,ok,G06,MTB,P2,G06_MTB_P2,True,3.0,training_pool,67.0,6.91,973.0,32.0,9.722,100.0,0.0
+G06\Sagemotion Sensor Data\G6_MTB_P3.csv,sagemotion,1068859,ok,G06,MTB,P3,G06_MTB_P3,True,3.0,training_pool,82.0,5.67,2014.0,32.0,20.129,100.0,0.0
+G06\Sagemotion Sensor Data\G6_MTB_P4.csv,sagemotion,613958,ok,G06,MTB,P4,G06_MTB_P4,True,1.0,training_pool,82.0,5.41,1155.0,32.0,11.54,100.0,0.0

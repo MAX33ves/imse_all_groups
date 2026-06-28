@@ -1,0 +1,2 @@
+feature_name,source_type,feature_family,selection_reason,pearson_to_pressure,spearman_to_pressure,within_bike_mean_abs_spearman,max_abs_peer_spearman,abs_spearman_rank
+rider_weight_kg,rider_context,rider_weight,"Rider weight changes tire load, deformation, and vibration response, so it is a physically meaningful context input.",0.0054760747202788,0.010755175492958,0.1025978352085154,0.2408642298918341,123
