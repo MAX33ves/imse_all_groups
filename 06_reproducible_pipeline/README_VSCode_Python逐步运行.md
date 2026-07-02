@@ -30,8 +30,10 @@ Core module code:
 | Local training pool / 本地训练池 | All 72 P1/P2/P3/P4 runs from G01-G06 / G01-G06 的 P1/P2/P3/P4 全部 72 个 run |
 | Local validation / 本地验证 | leave-one-group-out cross-validation / 留一组交叉验证 |
 | External test / 外部测试 | Instructor hidden test data / 老师隐藏测试数据 |
-| Prediction target / 预测目标 | Continuous tire pressure `pressure_bar` / 连续胎压 `pressure_bar` |
-| Final model inputs / 最终模型输入 | Signal features, bike type one-hot, `rider_weight_kg` / 信号特征、bike type one-hot、`rider_weight_kg` |
+| Pressure target / 胎压预测目标 | Continuous tire pressure `pressure_bar` / 连续胎压 `pressure_bar` |
+| Pressure-model inputs / 胎压模型输入 | Signal features, bike type one-hot, `rider_weight_kg` / 信号特征、bike type one-hot、`rider_weight_kg` |
+| Bike-type target / 单车类型预测目标 | Bike class `FAT`, `ISY`, or `MTB` / 单车类别 `FAT`、`ISY` 或 `MTB` |
+| Bike-type model inputs / 单车类型模型输入 | Sagemotion signal features only; no `bike`, `pressure_bar`, `rider_weight_kg`, or split metadata / 只使用 Sagemotion 信号特征；不使用 `bike`、`pressure_bar`、`rider_weight_kg` 或划分元数据 |
 
 Meaning of leave-one-group-out:  
 leave-one-group-out 的含义：
@@ -50,6 +52,7 @@ leave-one-group-out 的含义：
 | 02 | `02_extract_window_features.py` | Clean signals, crop active windows, extract 1 s window features / 清洗信号、裁剪 active window、切 1 秒窗口、提取特征 |
 | 03 | `03_make_eda_figures.py` | Generate EDA figures, PCA figures, and data-processing report / 生成 EDA 图、PCA 图和数据处理报告 |
 | 04 | `04_group_cv_model_selection.py` | Select the FFNN with leave-one-group-out CV / 用 leave-one-group-out CV 选择 FFNN |
+| 04b | `04b_bike_type_classification.py` | Select and train the bike-type classifier / 选择并训练单车类型分类模型 |
 | 05 | `05_train_final_model.py` | Train the final model on all 72 runs and save `.pkl` / 用全部 72 个 run 训练最终模型，保存 `.pkl` |
 | 06 | `06_check_outputs.py` | Check that required outputs exist / 检查关键输出是否齐全 |
 | 07 | `07_teacher_review_checks.py` | Generate teacher-review supplement and audit tables / 生成老师视角审查补充报告和复核表 |
@@ -79,6 +82,7 @@ python .\steps\01_build_labels_inventory.py
 python .\steps\02_extract_window_features.py
 python .\steps\03_make_eda_figures.py
 python .\steps\04_group_cv_model_selection.py
+python .\steps\04b_bike_type_classification.py
 python .\steps\05_train_final_model.py
 python .\steps\06_check_outputs.py
 python .\steps\07_teacher_review_checks.py
@@ -109,9 +113,14 @@ Logs record the step name, Python path, project path, key statistics, and `DONE`
 | Selected-model CV predictions / 选中模型 CV 预测 | `03_outputs/tables/training_pool_ffnn_selected_cv_predictions.csv` |
 | Final-model training-fit predictions / 最终模型训练拟合预测 | `03_outputs/tables/training_pool_ffnn_final_model_training_fit_predictions.csv` |
 | Final model file / 最终模型文件 | `03_outputs/models/training_pool_ffnn_final_model.pkl` |
+| Bike-type model comparison / 单车类型模型比较 | `03_outputs/tables/training_pool_bike_type_model_comparison.csv` |
+| Bike-type selected CV predictions / 单车类型选中模型 CV 预测 | `03_outputs/tables/training_pool_bike_type_selected_cv_predictions.csv` |
+| Bike-type CV confusion matrix / 单车类型 CV 混淆矩阵 | `03_outputs/tables/training_pool_bike_type_cv_confusion.csv` |
+| Bike-type final model file / 单车类型最终模型文件 | `03_outputs/models/training_pool_bike_type_final_model.pkl` |
 | Data-processing report / 数据处理报告 | `04_report/training_pool_data_processing_report_bilingual.md` |
 | Model-selection report / 模型选择报告 | `04_report/training_pool_ffnn_cv_model_report_bilingual.md` |
 | Final-model report / 最终模型报告 | `04_report/training_pool_ffnn_final_model_report_bilingual.md` |
+| Bike-type classifier report / 单车类型分类报告 | `04_report/training_pool_bike_type_classifier_report_bilingual.md` |
 | Teacher-review supplement / 老师审查补充报告 | `05_teacher_review/teacher_review_audit_bilingual.md` |
 | Teacher-review tables / 老师审查复核表 | `05_teacher_review/tables/*.csv` |
 
@@ -128,4 +137,5 @@ Start with `steps/` because each script corresponds to one pipeline stage. Then 
 | `signal_features.py` | Signal cleaning, filtering, active window, FFT/time-domain features / 信号清洗、滤波、active window、FFT/时域特征 |
 | `feature_pipeline.py` | Window slicing, feature tables, model input matrix / 窗口切片、特征表、模型输入矩阵 |
 | `modeling.py` | FFNN candidates, group CV, final training / FFNN 候选、组级 CV、最终模型训练 |
+| `bike_type_modeling.py` | Bike-type classifier candidates, leakage-safe feature spaces, group CV, and final training / 单车类型分类候选、防泄漏特征空间、组级 CV 和最终训练 |
 | `plotting.py` | EDA and model figures / EDA 和模型图表 |

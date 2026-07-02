@@ -45,6 +45,15 @@
       "group": "build"
     },
     {
+      "label": "Training Pool 04b Bike-Type Classification",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\04b_bike_type_classification.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "build"
+    },
+    {
       "label": "Training Pool 05 Train Final Model",
       "type": "process",
       "command": "${config:python.defaultInterpreterPath}",

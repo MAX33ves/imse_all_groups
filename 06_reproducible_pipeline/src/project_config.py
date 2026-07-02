@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import os
 import sys
 from pathlib import Path
 
@@ -13,6 +14,8 @@ VENDOR_DIR = WORKSPACE_ROOT / "_analysis" / "vendor"
 
 if VENDOR_DIR.exists() and str(VENDOR_DIR) not in sys.path:
     sys.path.insert(0, str(VENDOR_DIR))
+if hasattr(os, "add_dll_directory") and (VENDOR_DIR / "bin").exists():
+    os.add_dll_directory(str(VENDOR_DIR / "bin"))
 
 OUT_DIR = PROJECT_ROOT / "03_outputs"
 TABLE_DIR = OUT_DIR / "tables"

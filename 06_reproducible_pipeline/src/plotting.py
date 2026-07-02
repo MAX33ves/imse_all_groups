@@ -246,3 +246,62 @@ def plot_confusion(confusion_rows: pd.DataFrame, selected_model: str) -> Path:
     ax.set_ylabel("Actual pressure level (bar)")
     add_header(fig, ax, "Nearest-level confusion from CV regression outputs", "This is an auxiliary classification view; the main task is continuous regression.", top=0.80)
     return savefig(fig, FIG_MODEL_DIR / "training_pool_ffnn_05_cv_nearest_level_confusion.png")
+
+
+def plot_bike_type_cv_selection(comparison: pd.DataFrame, selected_model: str) -> Path:
+    plot_df = comparison.sort_values(["cv_selection_score", "model_complexity", "model_name"]).head(12).copy()
+    plot_df = plot_df.sort_values("cv_macro_f1", ascending=True)
+    colors = np.where(plot_df["model_name"].eq(selected_model), ORANGE["base"], BLUE["base"])
+    edges = np.where(plot_df["model_name"].eq(selected_model), ORANGE["dark"], BLUE["dark"])
+    fig, ax = plt.subplots(figsize=(12.0, 6.8))
+    bars = ax.barh(plot_df["model_name"], plot_df["cv_macro_f1"], color=colors, edgecolor=edges, linewidth=1.0)
+    ax.set_xlim(0, 1.02)
+    ax.set_xlabel("Leave-one-group-out CV macro-F1 (higher is better)")
+    ax.set_ylabel("")
+    for bar, f1_value, acc in zip(bars, plot_df["cv_macro_f1"], plot_df["cv_run_accuracy"]):
+        ax.text(min(f1_value + 0.02, 0.98), bar.get_y() + bar.get_height() / 2, f"F1 {f1_value:.2f} | acc {acc:.2f}", va="center", fontsize=7.4)
+    add_header(
+        fig,
+        ax,
+        "Bike-type classifier selection uses leakage-safe signal features",
+        "Orange is selected. No bike label, pressure, p-number, group, run id, file name, or rider weight is used as input.",
+        top=0.76,
+    )
+    return savefig(fig, FIG_MODEL_DIR / "training_pool_bike_type_01_cv_selection.png")
+
+
+def plot_bike_type_confusion(confusion_rows: pd.DataFrame, selected_model: str) -> Path:
+    part = confusion_rows[confusion_rows["model_name"].eq(selected_model)].copy()
+    matrix = part.pivot(index="actual_bike", columns="pred_bike", values="n_runs").reindex(index=BIKES, columns=BIKES).fillna(0).astype(int)
+    fig, ax = plt.subplots(figsize=(7.5, 6.2))
+    cmap = sns.blend_palette([TOKENS["panel"], BLUE["xlight"], BLUE["base"], ORANGE["base"]], as_cmap=True)
+    sns.heatmap(matrix, annot=True, fmt="d", cmap=cmap, linewidths=1.0, linecolor=TOKENS["panel"], cbar=False, ax=ax)
+    ax.set_xlabel("Predicted bike type")
+    ax.set_ylabel("Actual bike type")
+    add_header(fig, ax, "Bike-type classification confusion matrix", "Run-level predictions from leave-one-group-out CV.", top=0.80)
+    return savefig(fig, FIG_MODEL_DIR / "training_pool_bike_type_02_cv_confusion.png")
+
+
+def plot_bike_type_confidence(selected_cv_preds: pd.DataFrame) -> Path:
+    plot_df = selected_cv_preds.copy()
+    plot_df["status"] = np.where(plot_df["is_correct"], "correct", "wrong")
+    fig, ax = plt.subplots(figsize=(9.5, 6.3))
+    sns.stripplot(
+        data=plot_df,
+        x="actual_bike",
+        y="pred_confidence",
+        hue="status",
+        order=list(BIKES),
+        palette={"correct": OLIVE["base"], "wrong": ORANGE["base"]},
+        size=8,
+        jitter=0.18,
+        edgecolor=TOKENS["ink"],
+        linewidth=0.5,
+        ax=ax,
+    )
+    ax.set_ylim(0, 1.05)
+    ax.set_xlabel("Actual bike type")
+    ax.set_ylabel("Run-level predicted confidence")
+    ax.legend(title="", frameon=False, loc="lower right")
+    add_header(fig, ax, "Bike-type classifier confidence by actual class", "Each point is one held-out run; confidence is the averaged window probability of the predicted class.", top=0.80)
+    return savefig(fig, FIG_MODEL_DIR / "training_pool_bike_type_03_cv_confidence.png")

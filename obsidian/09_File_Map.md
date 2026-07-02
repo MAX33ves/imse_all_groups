@@ -10,6 +10,7 @@
 | `06_reproducible_pipeline/steps/02_extract_window_features.py` | 特征提取 / feature extraction |
 | `06_reproducible_pipeline/steps/03_make_eda_figures.py` | EDA / EDA figures and reports |
 | `06_reproducible_pipeline/steps/04_group_cv_model_selection.py` | 模型选择 / model selection |
+| `06_reproducible_pipeline/steps/04b_bike_type_classification.py` | 单车类型分类模型 / bike-type classifier |
 | `06_reproducible_pipeline/steps/05_train_final_model.py` | 最终模型 / final model training |
 | `06_reproducible_pipeline/steps/06_check_outputs.py` | 输出检查 / output checks |
 | `06_reproducible_pipeline/steps/07_teacher_review_checks.py` | 老师视角审查补充 / teacher-review supplement |
@@ -29,8 +30,14 @@
 | `03_outputs/tables/training_pool_ffnn_selected_cv_predictions.csv` | 选中模型 CV 预测 / selected-model CV predictions |
 | `03_outputs/models/training_pool_ffnn_selection_summary.json` | 模型选择摘要 / model-selection summary |
 | `03_outputs/models/training_pool_ffnn_final_model.pkl` | 最终模型 / final model |
+| `03_outputs/tables/training_pool_bike_type_model_comparison.csv` | 单车类型候选模型比较 / bike-type candidate model comparison |
+| `03_outputs/tables/training_pool_bike_type_selected_cv_predictions.csv` | 单车类型选中模型 CV 预测 / selected bike-type CV predictions |
+| `03_outputs/tables/training_pool_bike_type_cv_confusion.csv` | 单车类型 CV 混淆矩阵 / bike-type CV confusion matrix |
+| `03_outputs/models/training_pool_bike_type_selection_summary.json` | 单车类型模型选择摘要 / bike-type model-selection summary |
+| `03_outputs/models/training_pool_bike_type_final_model.pkl` | 单车类型最终模型 / final bike-type model |
 | `04_report/training_pool_ffnn_cv_model_report_bilingual.md` | CV 模型报告 / CV model report |
 | `04_report/training_pool_ffnn_final_model_report_bilingual.md` | 最终模型报告 / final-model report |
+| `04_report/training_pool_bike_type_classifier_report_bilingual.md` | 单车类型分类报告 / bike-type classifier report |
 | `05_teacher_review/teacher_review_audit_bilingual.md` | 老师视角审查补充报告 / teacher-review supplement |
 | `05_teacher_review/tables/*.csv` | 数据质量、误差结构、模型敏感性和课程缺口复核表 / review tables for data quality, error structure, model sensitivity, and requirement gaps |
 

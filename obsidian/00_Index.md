@@ -17,6 +17,8 @@ Because the instructor still has a hidden test dataset, all locally observed G01
 | 最终模型输入包含 rider weight。 | The final model includes rider weight as an input. |
 | CV MAE：0.290 bar。 | CV MAE: 0.290 bar. |
 | CV RMSE：0.388 bar。 | CV RMSE: 0.388 bar. |
+| 单车类型分类模型：`bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`。 | Bike-type classifier: `bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`. |
+| 单车类型 CV accuracy：0.986。 | Bike-type CV accuracy: 0.986. |
 | 最终模型已用全部 72 个 run 重新训练并保存为 `.pkl`。 | The final model has been retrained on all 72 runs and saved as a `.pkl` file. |
 | 老师视角审查补充报告：`../05_teacher_review/teacher_review_audit_bilingual.md`。 | Teacher-review supplement: `../05_teacher_review/teacher_review_audit_bilingual.md`. |
 
@@ -33,7 +35,8 @@ Because the instructor still has a hidden test dataset, all locally observed G01
 9. [[09_File_Map]]
 10. [[10_Bilingual_Quick_Brief]]
 11. [[11_Feature_Selection_Rationale]]
-12. `../05_teacher_review/teacher_review_audit_bilingual.md`
+12. [[12_Bike_Type_Classifier]]
+13. `../05_teacher_review/teacher_review_audit_bilingual.md`
 
 ## Key Figures / 关键图
 

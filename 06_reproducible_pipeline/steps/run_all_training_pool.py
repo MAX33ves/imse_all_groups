@@ -12,6 +12,7 @@ STEPS = [
     "02_extract_window_features.py",
     "03_make_eda_figures.py",
     "04_group_cv_model_selection.py",
+    "04b_bike_type_classification.py",
     "05_train_final_model.py",
     "06_check_outputs.py",
     "07_teacher_review_checks.py",

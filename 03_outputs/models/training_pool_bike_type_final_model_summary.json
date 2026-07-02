@@ -1,0 +1,69 @@
+{
+  "task": "bike_type_classification",
+  "target": "bike",
+  "class_labels": [
+    "FAT",
+    "ISY",
+    "MTB"
+  ],
+  "validation_method": "leave_one_group_out_cv",
+  "forbidden_inputs": [
+    "bike",
+    "pressure_bar",
+    "p_number",
+    "group",
+    "run_id",
+    "file name",
+    "rider_weight_kg"
+  ],
+  "allowed_input_scope": "Sagemotion acceleration and gyroscope signal features only.",
+  "selected_model": "bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
+  "selected_model_row": {
+    "model_name": "bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
+    "stage": "ensemble",
+    "candidate_type": "ffnn_classifier",
+    "feature_config": "signal_full_pca10",
+    "feature_space": "signal_full",
+    "n_features_in": 128,
+    "pca_components": 10,
+    "hidden_layers": "(6,)",
+    "hidden_units": 6,
+    "activation": "tanh",
+    "alpha": 1.0,
+    "aggregate_method": "mean_proba",
+    "n_seeds": 3,
+    "run_balanced_weights": true,
+    "cv_run_accuracy": 0.9861111111111112,
+    "cv_macro_f1": 0.9861050803300043,
+    "cv_min_group_accuracy": 0.9166666666666666,
+    "cv_group_accuracy_std": 0.031056499687497092,
+    "cv_mean_confidence": 0.8482043762539698,
+    "cv_n_runs": 72,
+    "cv_n_windows": 873,
+    "cv_selection_score": 0.0197610402224262,
+    "model_complexity": 16.0,
+    "near_best_cutoff": 0.0397610402224262,
+    "is_near_best": true
+  },
+  "selected_cv_metrics": {
+    "run_accuracy": 0.9861111111111112,
+    "macro_f1": 0.9861050803300043,
+    "min_group_accuracy": 0.9166666666666666,
+    "group_accuracy_std": 0.031056499687497092,
+    "mean_confidence": 0.8482043762539698,
+    "n_runs": 72,
+    "n_windows": 873
+  },
+  "training_pool_fit_metrics": {
+    "run_accuracy": 0.9861111111111112,
+    "macro_f1": 0.9861050803300043,
+    "min_group_accuracy": 0.9166666666666666,
+    "group_accuracy_std": 0.031056499687497092,
+    "mean_confidence": 0.8847502241508932,
+    "n_runs": 72,
+    "n_windows": 873
+  },
+  "n_labeled_runs": 72,
+  "n_windows": 873,
+  "model_file": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\models\\training_pool_bike_type_final_model.pkl"
+}
