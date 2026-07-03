@@ -48,7 +48,7 @@
       "label": "Training Pool 04b Suspension Classification",
       "type": "process",
       "command": "${config:python.defaultInterpreterPath}",
-      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\04b_bike_type_classification.py"],
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\04b_suspension_classification.py"],
       "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
       "problemMatcher": [],
       "group": "build"

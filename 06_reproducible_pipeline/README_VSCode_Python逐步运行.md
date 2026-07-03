@@ -52,7 +52,7 @@ leave-one-group-out 的含义：
 | 02 | `02_extract_window_features.py` | Clean signals, crop active windows, extract 1 s window features / 清洗信号、裁剪 active window、切 1 秒窗口、提取特征 |
 | 03 | `03_make_eda_figures.py` | Generate EDA figures, PCA figures, and data-processing report / 生成 EDA 图、PCA 图和数据处理报告 |
 | 04 | `04_group_cv_model_selection.py` | Select the FFNN with leave-one-group-out CV / 用 leave-one-group-out CV 选择 FFNN |
-| 04b | `04b_bike_type_classification.py` | Select and train the suspension/damping classifier / 选择并训练悬挂/阻尼类型分类模型 |
+| 04b | `04b_suspension_classification.py` | Select and train the suspension/damping classifier / 选择并训练悬挂/阻尼类型分类模型 |
 | 05 | `05_train_final_model.py` | Train the final model on all 72 runs and save `.pkl` / 用全部 72 个 run 训练最终模型，保存 `.pkl` |
 | 06 | `06_check_outputs.py` | Check that required outputs exist / 检查关键输出是否齐全 |
 | 07 | `07_teacher_review_checks.py` | Generate teacher-review supplement and audit tables / 生成老师视角审查补充报告和复核表 |
@@ -82,7 +82,7 @@ python .\steps\01_build_labels_inventory.py
 python .\steps\02_extract_window_features.py
 python .\steps\03_make_eda_figures.py
 python .\steps\04_group_cv_model_selection.py
-python .\steps\04b_bike_type_classification.py
+python .\steps\04b_suspension_classification.py
 python .\steps\05_train_final_model.py
 python .\steps\06_check_outputs.py
 python .\steps\07_teacher_review_checks.py
@@ -137,5 +137,5 @@ Start with `steps/` because each script corresponds to one pipeline stage. Then 
 | `signal_features.py` | Signal cleaning, filtering, active window, FFT/time-domain features / 信号清洗、滤波、active window、FFT/时域特征 |
 | `feature_pipeline.py` | Window slicing, feature tables, model input matrix / 窗口切片、特征表、模型输入矩阵 |
 | `modeling.py` | FFNN candidates, group CV, final training / FFNN 候选、组级 CV、最终模型训练 |
-| `bike_type_modeling.py` | Suspension classifier candidates, leakage-safe feature spaces, group CV, and final training / 悬挂类型分类候选、防泄漏特征空间、组级 CV 和最终训练 |
+| `suspension_modeling.py` | Suspension classifier candidates, leakage-safe feature spaces, group CV, and final training / 悬挂类型分类候选、防泄漏特征空间、组级 CV 和最终训练 |
 | `plotting.py` | EDA and model figures / EDA 和模型图表 |

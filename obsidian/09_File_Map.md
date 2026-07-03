@@ -10,7 +10,7 @@
 | `06_reproducible_pipeline/steps/02_extract_window_features.py` | 特征提取 / feature extraction |
 | `06_reproducible_pipeline/steps/03_make_eda_figures.py` | EDA / EDA figures and reports |
 | `06_reproducible_pipeline/steps/04_group_cv_model_selection.py` | 模型选择 / model selection |
-| `06_reproducible_pipeline/steps/04b_bike_type_classification.py` | 悬挂类型分类模型 / suspension classifier |
+| `06_reproducible_pipeline/steps/04b_suspension_classification.py` | 悬挂类型分类模型 / suspension classifier |
 | `06_reproducible_pipeline/steps/05_train_final_model.py` | 最终模型 / final model training |
 | `06_reproducible_pipeline/steps/06_check_outputs.py` | 输出检查 / output checks |
 | `06_reproducible_pipeline/steps/07_teacher_review_checks.py` | 老师视角审查补充 / teacher-review supplement |

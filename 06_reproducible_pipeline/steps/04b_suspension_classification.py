@@ -10,7 +10,7 @@ if str(SRC_DIR) not in sys.path:
 
 import pandas as pd
 
-from bike_type_modeling import (
+from suspension_modeling import (
     add_bike_selection_columns,
     bike_candidate_by_name,
     bike_metrics,

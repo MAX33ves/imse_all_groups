@@ -131,11 +131,10 @@ However, these are still not instructor hidden-test results. True external gener
 
 | File / 文件 | Purpose / 作用 |
 |---|---|
-| `../06_reproducible_pipeline/steps/04b_bike_type_classification.py` | Runs suspension model selection and final training / 运行悬挂模型选择与最终训练 |
-| `../06_reproducible_pipeline/src/bike_type_modeling.py` | Reusable classifier logic / 可复用分类模型逻辑 |
+| `../06_reproducible_pipeline/steps/04b_suspension_classification.py` | Runs suspension model selection and final training / 运行悬挂模型选择与最终训练 |
+| `../06_reproducible_pipeline/src/suspension_modeling.py` | Reusable classifier logic / 可复用分类模型逻辑 |
 | `../03_outputs/tables/training_pool_suspension_model_comparison.csv` | Candidate comparison / 候选模型比较 |
 | `../03_outputs/tables/training_pool_suspension_selected_cv_predictions.csv` | Selected-model CV predictions / 选中模型 CV 预测 |
 | `../03_outputs/tables/training_pool_suspension_cv_confusion.csv` | CV confusion matrix / CV 混淆矩阵 |
 | `../03_outputs/models/training_pool_suspension_final_model.pkl` | Final saved classifier / 最终保存的分类模型 |
 | `../04_report/training_pool_suspension_classifier_report_bilingual.md` | Bilingual report / 双语报告 |
-
