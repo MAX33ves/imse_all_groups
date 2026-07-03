@@ -45,7 +45,7 @@
       "group": "build"
     },
     {
-      "label": "Training Pool 04b Bike-Type Classification",
+      "label": "Training Pool 04b Suspension Classification",
       "type": "process",
       "command": "${config:python.defaultInterpreterPath}",
       "args": ["${workspaceFolder}\\steps\\04b_bike_type_classification.py"],

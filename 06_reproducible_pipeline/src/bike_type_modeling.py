@@ -8,7 +8,7 @@ from typing import Any
 
 import numpy as np
 import pandas as pd
-from project_config import BIKES
+from project_config import BIKES, SUSPENSION_BY_BIKE, SUSPENSION_TYPES
 from sklearn.base import clone
 from sklearn.decomposition import PCA
 from sklearn.exceptions import ConvergenceWarning
@@ -21,6 +21,41 @@ from sklearn.preprocessing import StandardScaler
 from feature_pipeline import signal_feature_columns
 
 warnings.filterwarnings("ignore", category=ConvergenceWarning)
+
+
+SUSPENSION_LABEL_SLUGS = {
+    "Suspension because of tyres": "tyre_suspension",
+    "No Suspension": "no_suspension",
+    "Front and rear Suspension": "front_rear_suspension",
+}
+
+
+def suspension_label_for_bike(bike: str) -> str:
+    return SUSPENSION_BY_BIKE[str(bike)]
+
+
+def bike_for_suspension_label(label: str) -> str:
+    for bike, suspension in SUSPENSION_BY_BIKE.items():
+        if suspension == label:
+            return bike
+    raise KeyError(f"Unknown suspension label: {label}")
+
+
+def proba_column(label: str) -> str:
+    return f"proba_{SUSPENSION_LABEL_SLUGS.get(label, str(label).lower().replace(' ', '_'))}"
+
+
+def window_proba_column(label: str) -> str:
+    return f"window_{proba_column(label)}"
+
+
+def with_suspension_labels(features: pd.DataFrame) -> pd.DataFrame:
+    out = features.copy()
+    out["suspension_type"] = out["bike"].map(SUSPENSION_BY_BIKE)
+    if out["suspension_type"].isna().any():
+        missing = sorted(out.loc[out["suspension_type"].isna(), "bike"].dropna().unique())
+        raise ValueError(f"Missing suspension mapping for bike labels: {missing}")
+    return out
 
 
 @dataclass(frozen=True)
@@ -76,11 +111,12 @@ def add_run_medians(features: pd.DataFrame, frame: pd.DataFrame, signal_cols: li
 
 
 def build_bike_feature_spaces(features: pd.DataFrame) -> dict[str, pd.DataFrame]:
-    """Build leakage-safe feature spaces for bike-type classification.
+    """Build leakage-safe feature spaces for suspension classification.
 
     Deliberately excludes bike label, pressure_bar, p_number, group, run_id,
-    file names, and rider_weight_kg. The classifier must learn from signal
-    behavior rather than metadata shortcuts.
+    file names, and rider_weight_kg. The suspension label is derived from the
+    course-provided bike-to-suspension table, but the classifier must learn from
+    signal behavior rather than metadata shortcuts.
     """
     signal_cols = signal_feature_columns(features)
     X_signal = features[signal_cols].copy()
@@ -117,7 +153,7 @@ def hidden_label(hidden_layers: tuple[int, ...]) -> str:
 def bike_candidate_name(stage: str, config: BikeFeatureConfig, hidden_layers: tuple[int, ...], activation: str, alpha: float, seeds: tuple[int, ...]) -> str:
     alpha_label = f"{alpha:g}".replace(".", "p")
     seed_label = f"ens{len(seeds)}" if len(seeds) > 1 else f"s{seeds[0]}"
-    return f"bike_type_ffnn_{stage}_{seed_label}_{config.name}_{activation}_h{hidden_label(hidden_layers)}_a{alpha_label}"
+    return f"suspension_ffnn_{stage}_{seed_label}_{config.name}_{activation}_h{hidden_label(hidden_layers)}_a{alpha_label}"
 
 
 def build_bike_stage1_candidates(configs: list[BikeFeatureConfig]) -> list[BikeCandidate]:
@@ -216,13 +252,14 @@ def fit_predict_bike(candidate: BikeCandidate, X_train: pd.DataFrame, y_train: p
 
 
 def aggregate_bike_predictions(window_meta: pd.DataFrame, probabilities: np.ndarray, candidate: BikeCandidate, class_labels: list[str], phase: str, fold: str = "") -> pd.DataFrame:
-    pred_df = window_meta[["group", "run_id", "bike", "p_number", "dataset_role"]].copy()
+    pred_df = window_meta[["group", "run_id", "bike", "suspension_type", "p_number", "dataset_role"]].copy()
     for idx, label in enumerate(class_labels):
-        pred_df[f"window_proba_{label}"] = probabilities[:, idx]
+        pred_df[window_proba_column(label)] = probabilities[:, idx]
     rows = []
     for run_id, part in pred_df.groupby("run_id", sort=False):
-        class_probas = np.asarray([part[f"window_proba_{label}"].mean() for label in class_labels], dtype=float)
+        class_probas = np.asarray([part[window_proba_column(label)].mean() for label in class_labels], dtype=float)
         pred_idx = int(np.argmax(class_probas))
+        pred_suspension = class_labels[pred_idx]
         row = {
             "phase": phase,
             "fold": fold,
@@ -233,21 +270,23 @@ def aggregate_bike_predictions(window_meta: pd.DataFrame, probabilities: np.ndar
             "p_number": part["p_number"].iloc[0],
             "dataset_role": part["dataset_role"].iloc[0],
             "actual_bike": part["bike"].iloc[0],
-            "pred_bike": class_labels[pred_idx],
+            "actual_suspension_type": part["suspension_type"].iloc[0],
+            "pred_suspension_type": pred_suspension,
+            "pred_bike_context": bike_for_suspension_label(pred_suspension),
             "pred_confidence": float(class_probas[pred_idx]),
             "n_windows": int(len(part)),
         }
         for idx, label in enumerate(class_labels):
-            row[f"proba_{label}"] = float(class_probas[idx])
+            row[proba_column(label)] = float(class_probas[idx])
         rows.append(row)
     out = pd.DataFrame(rows)
-    out["is_correct"] = out["actual_bike"].eq(out["pred_bike"])
+    out["is_correct"] = out["actual_suspension_type"].eq(out["pred_suspension_type"])
     return out
 
 
 def bike_metrics(run_preds: pd.DataFrame, class_labels: list[str]) -> dict[str, float]:
-    y_true = run_preds["actual_bike"].astype(str).to_numpy()
-    y_pred = run_preds["pred_bike"].astype(str).to_numpy()
+    y_true = run_preds["actual_suspension_type"].astype(str).to_numpy()
+    y_pred = run_preds["pred_suspension_type"].astype(str).to_numpy()
     group_acc = run_preds.groupby("group")["is_correct"].mean()
     return {
         "run_accuracy": float(accuracy_score(y_true, y_pred)),
@@ -265,7 +304,7 @@ def bike_candidate_columns(candidate: BikeCandidate) -> dict[str, Any]:
     return {
         "model_name": candidate.name,
         "stage": candidate.stage,
-        "candidate_type": "ffnn_classifier",
+        "candidate_type": "suspension_ffnn_classifier",
         "feature_config": config.name,
         "feature_space": config.space_name,
         "n_features_in": len(config.columns),
@@ -281,7 +320,8 @@ def bike_candidate_columns(candidate: BikeCandidate) -> dict[str, Any]:
 
 
 def evaluate_bike_group_cv(features: pd.DataFrame, spaces: dict[str, pd.DataFrame], candidates: list[BikeCandidate], class_labels: list[str] | None = None) -> tuple[pd.DataFrame, pd.DataFrame]:
-    class_labels = class_labels or list(BIKES)
+    features = with_suspension_labels(features)
+    class_labels = class_labels or list(SUSPENSION_TYPES)
     groups = sorted(features["group"].unique())
     metric_rows = []
     pred_rows = []
@@ -297,7 +337,7 @@ def evaluate_bike_group_cv(features: pd.DataFrame, spaces: dict[str, pd.DataFram
             probabilities = fit_predict_bike(
                 candidate,
                 frame.loc[fit_index, cols].reset_index(drop=True),
-                fit_features["bike"].reset_index(drop=True),
+                fit_features["suspension_type"].reset_index(drop=True),
                 fit_features,
                 frame.loc[pred_index, cols].reset_index(drop=True),
                 class_labels,
@@ -310,7 +350,7 @@ def evaluate_bike_group_cv(features: pd.DataFrame, spaces: dict[str, pd.DataFram
         metric_rows.append(row)
         pred_rows.append(run_pred_df)
         if i % 5 == 0 or i == len(candidates):
-            print(f"Bike-type CV evaluated {i}/{len(candidates)} candidates", flush=True)
+            print(f"Suspension CV evaluated {i}/{len(candidates)} candidates", flush=True)
     return pd.DataFrame(metric_rows), pd.concat(pred_rows, ignore_index=True)
 
 
@@ -349,11 +389,12 @@ def bike_candidate_by_name(candidates: list[BikeCandidate], name: str) -> BikeCa
 
 
 def fit_final_bike_model(candidate: BikeCandidate, spaces: dict[str, pd.DataFrame], features: pd.DataFrame, class_labels: list[str] | None = None) -> tuple[list[Pipeline], pd.DataFrame]:
-    class_labels = class_labels or list(BIKES)
+    features = with_suspension_labels(features)
+    class_labels = class_labels or list(SUSPENSION_TYPES)
     cols = list(candidate.feature_config.columns)
     frame = spaces[candidate.feature_config.space_name]
     X_train = frame[cols].reset_index(drop=True)
-    y_train = features["bike"].reset_index(drop=True)
+    y_train = features["suspension_type"].reset_index(drop=True)
     sample_weight = run_balanced_weights(features.reset_index(drop=True)) if candidate.use_run_balanced_weights else None
     pipelines: list[Pipeline] = []
     probs = []
@@ -369,23 +410,26 @@ def fit_final_bike_model(candidate: BikeCandidate, spaces: dict[str, pd.DataFram
 
 
 def build_bike_confusion_rows(preds: pd.DataFrame, selected_model: str, class_labels: list[str] | None = None) -> pd.DataFrame:
-    class_labels = class_labels or list(BIKES)
-    matrix = confusion_matrix(preds["actual_bike"], preds["pred_bike"], labels=class_labels)
+    class_labels = class_labels or list(SUSPENSION_TYPES)
+    matrix = confusion_matrix(preds["actual_suspension_type"], preds["pred_suspension_type"], labels=class_labels)
     rows = []
     for i, actual in enumerate(class_labels):
         for j, predicted in enumerate(class_labels):
-            rows.append({"model_name": selected_model, "actual_bike": actual, "pred_bike": predicted, "n_runs": int(matrix[i, j])})
+            rows.append({"model_name": selected_model, "actual_suspension_type": actual, "pred_suspension_type": predicted, "n_runs": int(matrix[i, j])})
     return pd.DataFrame(rows)
 
 
 def save_final_bike_model(path: Path, candidate: BikeCandidate, pipelines: list[Pipeline], class_labels: list[str] | None = None) -> None:
     payload = {
+        "task": "suspension_type_classification",
+        "target": "suspension_type",
         "candidate": asdict(candidate),
         "feature_config": asdict(candidate.feature_config),
-        "class_labels": class_labels or list(BIKES),
+        "class_labels": class_labels or list(SUSPENSION_TYPES),
+        "source_mapping": dict(SUSPENSION_BY_BIKE),
         "forbidden_inputs": ["bike", "pressure_bar", "p_number", "group", "run_id", "file name", "rider_weight_kg"],
         "pipelines": pipelines,
-        "prediction_note": "Apply the same raw-data processing and leakage-safe signal feature-space construction before using these pipelines.",
+        "prediction_note": "Apply the same raw-data processing and leakage-safe signal feature-space construction before using these pipelines. The predicted suspension labels follow the course table mapping from bike type to suspension type.",
     }
     with path.open("wb") as handle:
         pickle.dump(payload, handle)

@@ -214,9 +214,9 @@ def build_review_tables() -> dict[str, pd.DataFrame]:
             },
             {
                 "requirement_or_question": "Predict tire pressures and damping of the bicycle.",
-                "current_evidence": "The available label table contains tire pressure, rider weight, and ride time; no continuous damping label is available.",
-                "gap_or_caveat": "Damping cannot be supervised as an output without labels.",
-                "recommended_text_or_action": "Explain that damping is addressed through vibration/damping-related features and bike suspension context, while the supervised target is tire pressure.",
+                "current_evidence": "Tire pressure is available as a continuous label. Damping/suspension is available as a categorical label through the course table: FAT -> Suspension because of tyres, ISY -> No Suspension, and MTB -> Front and rear Suspension.",
+                "gap_or_caveat": "No continuous damping coefficient is available, so Step 04b predicts the table-defined suspension category rather than a numeric damping value.",
+                "recommended_text_or_action": "Report Step 04b as the suspension/damping classifier and state that bike, pressure, p-number, group, run id, file name, and rider weight are excluded from its inputs to avoid leakage.",
             },
         ]
     )
@@ -250,8 +250,8 @@ def write_markdown_report(tables: dict[str, pd.DataFrame], path: Path) -> None:
         "The main project logic is sound: local G01-G06, P1-P4 data provide 72 runs for the training pool; because the instructor still has a hidden test set, local generalization is estimated with leave-one-group-out cross-validation; the final model is then retrained on all local runs.",
         "当前项目的主逻辑是成立的：本地 G01-G06、P1-P4 共 72 个 run 作为训练池；由于老师还有隐藏测试集，本地泛化用 leave-one-group-out cross-validation 估计；最终模型再用全部本地 run 训练。",
         "",
-        "The report still needs to be explicit about several scope and logic points: why PhyPhox is not included in the current model matrix, how the FFNN architecture satisfies the course requirement, why CV metrics are not hidden-test results, why rider weight is physical context rather than a strong direct label proxy, and why damping is represented through vibration features rather than supervised as a separate label.",
-        "但报告层仍有几处需要讲得更清楚：PhyPhox 数据为什么没有入模、FFNN 架构如何对应课程要求、CV 指标不是隐藏测试结果、体重是物理上下文而不是强相关标签替代物、damping 没有独立监督标签。",
+        "The report still needs to be explicit about several scope and logic points: why PhyPhox is not included in the current model matrix, how the FFNN architecture satisfies the course requirement, why CV metrics are not hidden-test results, why rider weight is physical context rather than a strong direct label proxy, and why the damping/suspension task is modeled as a categorical label from the course table rather than as a continuous damping coefficient.",
+        "但报告层仍有几处需要讲得更清楚：PhyPhox 数据为什么没有入模、FFNN 架构如何对应课程要求、CV 指标不是隐藏测试结果、体重是物理上下文而不是强相关标签替代物、damping/suspension 为什么按课程表中的类别标签建模，而不是按连续阻尼系数建模。",
         "",
         "## Data And Output Checks / 数据和输出复核",
         "",
@@ -299,8 +299,8 @@ def write_markdown_report(tables: dict[str, pd.DataFrame], path: Path) -> None:
         "   MLP 使用 sklearn 的 lbfgs 优化器训练（max_iter=3000, max_fun=40000），因此训练记录重点是优化器上限和收敛，而不是固定 epoch 数。",
         "4. `PhyPhox files were checked for completeness, but the current model uses Sagemotion because it provides two mounted sensors and gyroscope channels. PhyPhox should be treated as optional future validation unless a baseline experiment is added.`",
         "   PhyPhox 文件已检查完整性，但当前模型使用 Sagemotion，因为它提供两个固定安装传感器和陀螺仪通道；除非补充 baseline 实验，否则 PhyPhox 应作为未来验证来源。",
-        "5. `Damping is not a supervised target because no damping label is available in Measurement Details; damping-related behavior is represented through amplitude, energy, frequency-band, and spectral features.`",
-        "   Damping 不是监督学习目标，因为 Measurement Details 中没有 damping 标签；与阻尼相关的行为通过振幅、能量、频带和频谱特征表示。",
+        "5. `The damping/suspension task is handled as categorical classification. The labels are derived from the course table: FAT -> Suspension because of tyres, ISY -> No Suspension, and MTB -> Front and rear Suspension. The classifier uses Sagemotion signal features only and excludes bike, pressure, p-number, group, run id, file name, and rider weight to avoid leakage.`",
+        "   Damping/suspension 任务按类别分类处理。标签来自课程表：FAT -> Suspension because of tyres，ISY -> No Suspension，MTB -> Front and rear Suspension。分类器只使用 Sagemotion 信号特征，并排除 bike、pressure、p-number、group、run id、file name 和 rider weight，以避免标签泄漏。",
     ]
     path.write_text("\n".join(lines), encoding="utf-8")
 

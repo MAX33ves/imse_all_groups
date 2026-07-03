@@ -27,6 +27,12 @@ LOG_DIR = PIPELINE_ROOT / "logs"
 
 BIKES = ("FAT", "ISY", "MTB")
 GROUPS = tuple(f"G{i:02d}" for i in range(1, 7))
+SUSPENSION_BY_BIKE = {
+    "FAT": "Suspension because of tyres",
+    "ISY": "No Suspension",
+    "MTB": "Front and rear Suspension",
+}
+SUSPENSION_TYPES = tuple(SUSPENSION_BY_BIKE[bike] for bike in BIKES)
 
 # New project rule:
 # All observed P1-P4 runs are local training data. The teacher's hidden dataset is

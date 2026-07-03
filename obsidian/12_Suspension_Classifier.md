@@ -1,33 +1,39 @@
-# Bike-Type Classifier / 单车类型分类模型
+# Suspension Classifier / 悬挂类型分类模型
 
 ## What This Model Predicts / 这个模型预测什么
 
-这个模型预测每个 run 属于哪一种单车：`FAT`、`ISY` 或 `MTB`。
+这个模型预测老师要求的 damping / suspension type，而不是把 bike type 作为最终输出。
 
-This model predicts the bike class for each run: `FAT`, `ISY`, or `MTB`.
+This model predicts the damping / suspension type required by the instructor, not bike type as the final output.
 
-它和胎压模型不是同一个任务。胎压模型预测连续数值 `pressure_bar`，所以是 regression；单车类型模型预测三个类别之一，所以是 classification。
+悬挂标签来自课程表中的对应关系：
 
-It is not the same task as tire-pressure prediction. The pressure model predicts the continuous value `pressure_bar`, so it is a regression task; the bike-type model predicts one of three classes, so it is a classification task.
+The suspension labels come from the course table:
+
+| Bike context / 单车背景 | Suspension label / 悬挂标签 |
+|---|---|
+| FAT | Suspension because of tyres |
+| ISY | No Suspension |
+| MTB | Front and rear Suspension |
+
+因此，算法的监督标签是 `suspension_type`。`bike` 只作为生成训练标签的表格依据和解释背景，不作为模型输入。
+
+Therefore, the supervised label is `suspension_type`. `bike` is only used as the table-based source for the label and as explanatory context; it is not used as a model input.
 
 ## Why It Is Separate From The Pressure Model / 为什么和胎压模型分开
 
-当前最清晰的结构是两个模型：
+胎压模型预测连续数值 `pressure_bar`，所以是 regression。
 
-The clearest current structure uses two models:
+The pressure model predicts the continuous value `pressure_bar`, so it is a regression task.
+
+悬挂类型模型预测三个类别之一，所以是 classification。
+
+The suspension model predicts one of three categories, so it is a classification task.
 
 | Model / 模型 | Target / 目标 | Output / 输出 |
 |---|---|---|
 | Pressure FFNN regressor / 胎压 FFNN 回归模型 | `pressure_bar` | continuous pressure in bar / 连续胎压数值 |
-| Bike-type FFNN classifier / 单车类型 FFNN 分类模型 | `bike` | `FAT`, `ISY`, or `MTB` / 三类单车之一 |
-
-分开的原因是目标类型不同、评价指标不同、可用输入也不同。压力模型可以在“已知单车类型”的设定下使用 bike one-hot；但分类模型绝对不能把 `bike` 当输入，因为 `bike` 本身就是要预测的答案。
-
-The reason for separating them is that the target type, evaluation metrics, and allowed inputs differ. The pressure model can use bike one-hot under a known-bike-context assumption; the classifier must not use `bike` as an input because `bike` is the label being predicted.
-
-如果最终系统不知道单车类型，可以先运行单车类型分类模型，再把预测出来的 bike type 交给下游胎压模型。更严格的扩展版本是再训练一个“不使用 bike type 的胎压模型”，用来和级联方案做对照。
-
-If the final system does not know the bike type, the classifier can run first and pass the predicted bike type to a downstream pressure model. A stricter extension would also train a pressure model that does not use bike type, then compare it with the cascaded design.
+| Suspension FFNN classifier / 悬挂 FFNN 分类模型 | `suspension_type` | one of three suspension labels / 三种悬挂标签之一 |
 
 ## Leakage-Safe Inputs / 防泄漏输入规则
 
@@ -41,17 +47,18 @@ These fields are explicitly excluded:
 
 | Excluded field / 排除字段 | Reason / 原因 |
 |---|---|
-| `bike` | 这是分类标签本身 / this is the classification label itself |
-| `pressure_bar` | 真实预测时不应已知，而且会把胎压标签信息泄漏进分类任务 / it should not be known at prediction time and would leak pressure-label information |
+| `bike` | 会直接泄漏表格映射后的悬挂标签 / it directly reveals the mapped suspension label |
+| `suspension_type` | 这是分类标签本身 / this is the classification label itself |
+| `pressure_bar` | 真实预测时不应已知，而且会泄漏胎压标签 / it should not be known at prediction time and would leak pressure-label information |
 | `p_number` | 胎压水平编号，不是传感器信号 / pressure-level identifier, not a sensor signal |
 | `group` | CV 划分字段，不能作为模型输入 / CV split field, not a model input |
 | `run_id` | 唯一编号，会让模型记忆样本 / unique identifier that can let the model memorize samples |
 | file name | 元数据，不是物理信号 / metadata, not a physical signal |
-| `rider_weight_kg` | 可能编码骑手或 group 背景，而不是单车结构本身 / may encode rider or group context rather than bike structure |
+| `rider_weight_kg` | 可能编码骑手或 group 背景，而不是悬挂结构本身 / may encode rider or group context rather than suspension structure |
 
-这个规则让模型必须从加速度和陀螺仪信号模式中学习单车结构差异。
+这个规则让模型必须从加速度和陀螺仪信号模式中学习悬挂/阻尼差异。
 
-This rule forces the model to learn bike-structure differences from acceleration and gyroscope signal patterns.
+This rule forces the model to learn suspension/damping differences from acceleration and gyroscope signal patterns.
 
 ## Selected Model / 选中的模型
 
@@ -59,7 +66,7 @@ This rule forces the model to learn bike-structure differences from acceleration
 
 The selected model is:
 
-`bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`
+`suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`
 
 它的结构是：
 
@@ -67,6 +74,7 @@ Its structure is:
 
 ```text
 Sagemotion signal features
+-> SimpleImputer(median)
 -> StandardScaler
 -> PCA(10)
 -> MLPClassifier(hidden_layer_sizes=(6,), activation="tanh", alpha=1.0)
@@ -107,7 +115,7 @@ After selecting the structure, the final model is retrained once on all 72 local
 | Run-level CV accuracy | 0.986 |
 | Run-level CV macro-F1 | 0.986 |
 | Minimum group accuracy | 0.917 |
-| Mean prediction confidence | 0.848 |
+| Mean prediction confidence | 0.841 |
 | Labeled runs | 72 |
 | Window rows | 873 |
 
@@ -123,11 +131,11 @@ However, these are still not instructor hidden-test results. True external gener
 
 | File / 文件 | Purpose / 作用 |
 |---|---|
-| `../06_reproducible_pipeline/steps/04b_bike_type_classification.py` | Runs bike-type model selection and final training / 运行单车类型模型选择与最终训练 |
+| `../06_reproducible_pipeline/steps/04b_bike_type_classification.py` | Runs suspension model selection and final training / 运行悬挂模型选择与最终训练 |
 | `../06_reproducible_pipeline/src/bike_type_modeling.py` | Reusable classifier logic / 可复用分类模型逻辑 |
-| `../03_outputs/tables/training_pool_bike_type_model_comparison.csv` | Candidate comparison / 候选模型比较 |
-| `../03_outputs/tables/training_pool_bike_type_selected_cv_predictions.csv` | Selected-model CV predictions / 选中模型 CV 预测 |
-| `../03_outputs/tables/training_pool_bike_type_cv_confusion.csv` | CV confusion matrix / CV 混淆矩阵 |
-| `../03_outputs/models/training_pool_bike_type_final_model.pkl` | Final saved classifier / 最终保存的分类模型 |
-| `../04_report/training_pool_bike_type_classifier_report_bilingual.md` | Bilingual report / 双语报告 |
+| `../03_outputs/tables/training_pool_suspension_model_comparison.csv` | Candidate comparison / 候选模型比较 |
+| `../03_outputs/tables/training_pool_suspension_selected_cv_predictions.csv` | Selected-model CV predictions / 选中模型 CV 预测 |
+| `../03_outputs/tables/training_pool_suspension_cv_confusion.csv` | CV confusion matrix / CV 混淆矩阵 |
+| `../03_outputs/models/training_pool_suspension_final_model.pkl` | Final saved classifier / 最终保存的分类模型 |
+| `../04_report/training_pool_suspension_classifier_report_bilingual.md` | Bilingual report / 双语报告 |
 

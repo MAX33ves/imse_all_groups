@@ -1,14 +1,20 @@
 {
-  "task": "bike_type_classification",
-  "target": "bike",
+  "task": "suspension_type_classification",
+  "target": "suspension_type",
   "class_labels": [
-    "FAT",
-    "ISY",
-    "MTB"
+    "Suspension because of tyres",
+    "No Suspension",
+    "Front and rear Suspension"
   ],
+  "source_mapping": {
+    "FAT": "Suspension because of tyres",
+    "ISY": "No Suspension",
+    "MTB": "Front and rear Suspension"
+  },
   "validation_method": "leave_one_group_out_cv",
   "forbidden_inputs": [
     "bike",
+    "suspension_type",
     "pressure_bar",
     "p_number",
     "group",
@@ -17,11 +23,11 @@
     "rider_weight_kg"
   ],
   "allowed_input_scope": "Sagemotion acceleration and gyroscope signal features only.",
-  "selected_model": "bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
+  "selected_model": "suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
   "selected_model_row": {
-    "model_name": "bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
+    "model_name": "suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
     "stage": "ensemble",
-    "candidate_type": "ffnn_classifier",
+    "candidate_type": "suspension_ffnn_classifier",
     "feature_config": "signal_full_pca10",
     "feature_space": "signal_full",
     "n_features_in": 128,
@@ -37,7 +43,7 @@
     "cv_macro_f1": 0.9861050803300043,
     "cv_min_group_accuracy": 0.9166666666666666,
     "cv_group_accuracy_std": 0.031056499687497092,
-    "cv_mean_confidence": 0.8482043762539698,
+    "cv_mean_confidence": 0.8412334141315464,
     "cv_n_runs": 72,
     "cv_n_windows": 873,
     "cv_selection_score": 0.0197610402224262,
@@ -50,7 +56,7 @@
     "macro_f1": 0.9861050803300043,
     "min_group_accuracy": 0.9166666666666666,
     "group_accuracy_std": 0.031056499687497092,
-    "mean_confidence": 0.8482043762539698,
+    "mean_confidence": 0.8412334141315464,
     "n_runs": 72,
     "n_windows": 873
   },
@@ -59,11 +65,11 @@
     "macro_f1": 0.9861050803300043,
     "min_group_accuracy": 0.9166666666666666,
     "group_accuracy_std": 0.031056499687497092,
-    "mean_confidence": 0.8847502241508932,
+    "mean_confidence": 0.8905691627139328,
     "n_runs": 72,
     "n_windows": 873
   },
   "n_labeled_runs": 72,
   "n_windows": 873,
-  "model_file": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\models\\training_pool_bike_type_final_model.pkl"
+  "model_file": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\models\\training_pool_suspension_final_model.pkl"
 }

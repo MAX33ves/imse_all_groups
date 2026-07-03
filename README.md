@@ -1,22 +1,22 @@
-# IMSE Bicycle Tire-Pressure And Bike-Type Models / IMSE 自行车胎压与单车类型模型项目
+# IMSE Bicycle Tire-Pressure And Suspension Models / IMSE 自行车胎压与悬挂类型模型项目
 
-This repository contains the reproducible analysis pipeline, model outputs, figures, reports, and bilingual Obsidian notes for the IMSE bicycle tire-pressure and bike-type prediction project.  
-本仓库包含 IMSE 自行车胎压与单车类型预测项目的可复现分析流程、模型输出、图表、报告和中英双语 Obsidian 笔记。
+This repository contains the reproducible analysis pipeline, model outputs, figures, reports, and bilingual Obsidian notes for the IMSE bicycle tire-pressure and suspension/damping prediction project.  
+本仓库包含 IMSE 自行车胎压与悬挂/阻尼类型预测项目的可复现分析流程、模型输出、图表、报告和中英双语 Obsidian 笔记。
 
 ## Project Summary / 项目概要
 
-The project now has two supervised models: a tire-pressure regressor for continuous `pressure_bar`, and a separate bike-type classifier for `FAT`, `ISY`, and `MTB`.  
-项目现在包含两个监督学习模型：一个用于连续胎压 `pressure_bar` 的回归模型，以及一个单独用于 `FAT`、`ISY`、`MTB` 的单车类型分类模型。
+The project now has two supervised models: a tire-pressure regressor for continuous `pressure_bar`, and a separate suspension/damping classifier whose labels are derived from the course table mapping bike type to suspension type.  
+项目现在包含两个监督学习模型：一个用于连续胎压 `pressure_bar` 的回归模型，以及一个根据课程表“单车类型 -> 悬挂类型”映射得到标签的悬挂/阻尼类型分类模型。
 
 Selected pressure model:  
 选中的胎压模型：
 
 `ffnn_training_pool_ensemble_ens3_compact_weight_pca6_tanh_h8x4_a1_median`
 
-Selected bike-type model:  
-选中的单车类型模型：
+Selected suspension model:  
+选中的悬挂类型模型：
 
-`bike_type_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`
+`suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`
 
 Key local CV metrics:  
 关键本地 CV 指标：
@@ -27,8 +27,8 @@ Key local CV metrics:
 | Leave-one-group-out CV RMSE | 0.388 bar |
 | Nearest-level accuracy | 0.597 |
 | Macro-F1 | 0.466 |
-| Bike-type CV accuracy | 0.986 |
-| Bike-type CV macro-F1 | 0.986 |
+| Suspension-type CV accuracy | 0.986 |
+| Suspension-type CV macro-F1 | 0.986 |
 
 ## Data Scope / 数据范围
 
@@ -94,7 +94,7 @@ VSCode 用户也可以通过 `Tasks: Run Task` 运行已经配置好的任务。
 - `04_report/training_pool_data_processing_report_bilingual.md`
 - `04_report/training_pool_ffnn_cv_model_report_bilingual.md`
 - `04_report/training_pool_ffnn_final_model_report_bilingual.md`
-- `04_report/training_pool_bike_type_classifier_report_bilingual.md`
+- `04_report/training_pool_suspension_classifier_report_bilingual.md`
 - `05_teacher_review/teacher_review_audit_bilingual.md`
 - `obsidian/00_Index.md`
 
@@ -102,6 +102,6 @@ VSCode 用户也可以通过 `Tasks: Run Task` 运行已经配置好的任务。
 
 - CV metrics are local post-selection estimates, not hidden-test results. / CV 指标是本地模型选择后的泛化估计，不是隐藏测试集结果。
 - Training-pool fit metrics are not test metrics. / 训练池拟合指标不是测试指标。
-- The bike-type classifier deliberately excludes `bike`, `pressure_bar`, `p_number`, `group`, `run_id`, file name, and `rider_weight_kg` from its inputs. / 单车类型分类模型刻意不使用 `bike`、`pressure_bar`、`p_number`、`group`、`run_id`、文件名和 `rider_weight_kg` 作为输入。
+- The suspension classifier deliberately excludes `bike`, `suspension_type`, `pressure_bar`, `p_number`, `group`, `run_id`, file name, and `rider_weight_kg` from its inputs. / 悬挂类型分类模型刻意不使用 `bike`、`suspension_type`、`pressure_bar`、`p_number`、`group`、`run_id`、文件名和 `rider_weight_kg` 作为输入。
 - PhyPhox files were checked for completeness, but the current FFNN feature matrix uses Sagemotion CSV features only. / PhyPhox 文件已检查完整性，但当前 FFNN 特征矩阵只使用 Sagemotion CSV 特征。
-- Damping is not supervised as a separate target because no damping label is available. It is represented through vibration-related signal features. / Damping 没有独立监督标签，因此没有作为单独目标预测，而是通过振动相关信号特征体现。
+- Suspension/damping labels are derived from the provided bike-to-suspension table, so the model predicts the table-defined suspension category from signal features. / 悬挂/阻尼标签来自给定的“车型到悬挂类型”表，因此模型从信号特征预测表中定义的悬挂类别。

@@ -11,8 +11,8 @@
 | CV RMSE | 0.388 bar |
 | CV nearest-level accuracy | 0.597 |
 | CV macro-F1 | 0.466 |
-| Bike-type CV accuracy | 0.986 |
-| Bike-type CV macro-F1 | 0.986 |
+| Suspension-type CV accuracy | 0.986 |
+| Suspension-type CV macro-F1 | 0.986 |
 
 ## How To Interpret This Performance / 怎么解释这个水平
 
@@ -32,9 +32,9 @@ However, MTB remains the most difficult bike type to predict.
 
 This suggests that the model learns the vibration-pressure relationship less reliably for MTB. Possible causes include MTB structure, sensor response, rider behavior, or insufficient features for MTB-specific dynamics.
 
-单车类型分类任务表现明显更强，选中模型在 run-level leave-one-group-out CV 上达到 0.986 accuracy 和 0.986 macro-F1。这个模型只使用 Sagemotion 信号特征，不使用 `bike`、`pressure_bar`、`rider_weight_kg` 或 group/run/file metadata。
+悬挂类型分类任务表现明显更强，选中模型在 run-level leave-one-group-out CV 上达到 0.986 accuracy 和 0.986 macro-F1。悬挂标签来自课程表中 FAT/ISY/MTB 与悬挂类型的一一映射；模型只使用 Sagemotion 信号特征，不使用 `bike`、`suspension_type`、`pressure_bar`、`rider_weight_kg` 或 group/run/file metadata。
 
-The bike-type classification task is much stronger: the selected model reaches 0.986 run-level leave-one-group-out CV accuracy and 0.986 macro-F1. It uses only Sagemotion signal features and excludes `bike`, `pressure_bar`, `rider_weight_kg`, and group/run/file metadata.
+The suspension-type classification task is much stronger: the selected model reaches 0.986 run-level leave-one-group-out CV accuracy and 0.986 macro-F1. The suspension labels are derived from the one-to-one FAT/ISY/MTB to suspension-type mapping in the course table. It uses only Sagemotion signal features and excludes `bike`, `suspension_type`, `pressure_bar`, `rider_weight_kg`, and group/run/file metadata.
 
 ## Suggested Report Text / 报告里应该怎么写
 
@@ -44,11 +44,11 @@ The bike-type classification task is much stronger: the selected model reaches 0
 
 > 由于老师还有隐藏测试集，所有已观测的 P1-P4 run 都被作为本地训练池。为了估计泛化能力，我们使用 leave-one-group-out 交叉验证。选中的 FFNN 使用 rider weight 作为输入，在 run-level 上达到 0.290 bar 的 CV MAE 和 0.388 bar 的 CV RMSE。剩余误差主要来自 MTB，说明当前特征对 FAT 和 ISY 的胎压变化描述更稳定，而对 MTB 还不够充分。
 
-> For the additional bike-type task, a separate FFNN classifier was trained because bike type is a categorical target, not a continuous regression target. The selected classifier uses Sagemotion signal features only and achieved 0.986 run-level CV accuracy and 0.986 macro-F1 under the same leave-one-group-out validation design.
+> For the additional suspension/damping task, a separate FFNN classifier was trained because suspension type is a categorical target, not a continuous regression target. The labels were derived from the course table mapping bike type to suspension type. The selected classifier uses Sagemotion signal features only and achieved 0.986 run-level CV accuracy and 0.986 macro-F1 under the same leave-one-group-out validation design.
 
 
 
-> 对新增的单车类型任务，我们训练了一个单独的 FFNN 分类模型，因为单车类型是类别目标，而不是连续回归目标。选中的分类模型只使用 Sagemotion 信号特征，在同样的 leave-one-group-out 验证设计下达到 0.986 run-level CV accuracy 和 0.986 macro-F1。
+> 对新增的悬挂/阻尼类型任务，我们训练了一个单独的 FFNN 分类模型，因为悬挂类型是类别目标，而不是连续回归目标。标签来自课程表中“单车类型 -> 悬挂类型”的映射。选中的分类模型只使用 Sagemotion 信号特征，在同样的 leave-one-group-out 验证设计下达到 0.986 run-level CV accuracy 和 0.986 macro-F1。
 
 ## Limitations / 局限
 
@@ -58,8 +58,8 @@ The bike-type classification task is much stronger: the selected model reaches 0
 - Window samples are not independent, so run-level metrics must be used.
 - 隐藏测试集分布未知，CV 只能估计本地跨组泛化。
 - The hidden-test distribution is unknown; CV only estimates local cross-group generalization.
-- 单车类型分类模型表现很高，但仍需要隐藏测试集验证它是否能泛化到老师的数据。
-- The bike-type classifier performs strongly locally, but the hidden test set is still needed to confirm generalization to the instructor data.
+- 悬挂类型分类模型表现很高，但仍需要隐藏测试集验证它是否能泛化到老师的数据。
+- The suspension classifier performs strongly locally, but the hidden test set is still needed to confirm generalization to the instructor data.
 - 当前模型主要使用手工信号特征，可能还没有完全捕捉 MTB 的结构响应。
 - The current model mainly uses handcrafted signal features and may not fully capture MTB structural response.
 - 相关性分析只用于解释特征和检查冗余，最终模型选择仍以 leave-one-group-out CV 为准。详细证据链见 [[11_Feature_Selection_Rationale]]。

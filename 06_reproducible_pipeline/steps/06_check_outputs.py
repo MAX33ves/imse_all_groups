@@ -27,20 +27,20 @@ def main() -> None:
             TABLE_DIR / "training_pool_ffnn_model_comparison.csv",
             TABLE_DIR / "training_pool_ffnn_selected_cv_predictions.csv",
             TABLE_DIR / "training_pool_ffnn_final_model_training_fit_predictions.csv",
-            TABLE_DIR / "training_pool_bike_type_model_comparison.csv",
-            TABLE_DIR / "training_pool_bike_type_selected_cv_predictions.csv",
-            TABLE_DIR / "training_pool_bike_type_cv_confusion.csv",
-            TABLE_DIR / "training_pool_bike_type_final_model_training_fit_predictions.csv",
+            TABLE_DIR / "training_pool_suspension_model_comparison.csv",
+            TABLE_DIR / "training_pool_suspension_selected_cv_predictions.csv",
+            TABLE_DIR / "training_pool_suspension_cv_confusion.csv",
+            TABLE_DIR / "training_pool_suspension_final_model_training_fit_predictions.csv",
             MODEL_DIR / "training_pool_ffnn_selection_summary.json",
             MODEL_DIR / "training_pool_ffnn_final_model_summary.json",
             MODEL_DIR / "training_pool_ffnn_final_model.pkl",
-            MODEL_DIR / "training_pool_bike_type_selection_summary.json",
-            MODEL_DIR / "training_pool_bike_type_final_model_summary.json",
-            MODEL_DIR / "training_pool_bike_type_final_model.pkl",
+            MODEL_DIR / "training_pool_suspension_selection_summary.json",
+            MODEL_DIR / "training_pool_suspension_final_model_summary.json",
+            MODEL_DIR / "training_pool_suspension_final_model.pkl",
             REPORT_DIR / "training_pool_data_processing_report_bilingual.md",
             REPORT_DIR / "training_pool_ffnn_cv_model_report_bilingual.md",
             REPORT_DIR / "training_pool_ffnn_final_model_report_bilingual.md",
-            REPORT_DIR / "training_pool_bike_type_classifier_report_bilingual.md",
+            REPORT_DIR / "training_pool_suspension_classifier_report_bilingual.md",
             FIG_EDA_DIR / "training_pool_03_pca_all_local_data.png",
             FIG_EDA_DIR / "training_pool_05_feature_target_correlation.png",
             FIG_EDA_DIR / "training_pool_06_final_input_correlation_matrix.png",
@@ -53,9 +53,9 @@ def main() -> None:
         labels = pd.read_csv(TABLE_DIR / "training_pool_labels.csv")
         features = pd.read_csv(TABLE_DIR / "training_pool_window_features.csv", usecols=["run_id", "group"])
         selected_cv = pd.read_csv(TABLE_DIR / "training_pool_ffnn_selected_cv_predictions.csv")
-        bike_cv = pd.read_csv(TABLE_DIR / "training_pool_bike_type_selected_cv_predictions.csv")
+        suspension_cv = pd.read_csv(TABLE_DIR / "training_pool_suspension_selected_cv_predictions.csv")
         summary = json.loads((MODEL_DIR / "training_pool_ffnn_selection_summary.json").read_text(encoding="utf-8"))
-        bike_summary = json.loads((MODEL_DIR / "training_pool_bike_type_selection_summary.json").read_text(encoding="utf-8"))
+        suspension_summary = json.loads((MODEL_DIR / "training_pool_suspension_selection_summary.json").read_text(encoding="utf-8"))
 
         emit("")
         emit(f"Training-pool runs : {labels['run_id'].nunique()}")
@@ -65,21 +65,21 @@ def main() -> None:
         emit(f"CV MAE             : {summary['selected_cv_metrics']['mae_bar']:.3f} bar")
         emit(f"CV RMSE            : {summary['selected_cv_metrics']['rmse_bar']:.3f} bar")
         emit(f"CV predictions     : {selected_cv['run_id'].nunique()} runs")
-        emit(f"Bike model         : {bike_summary['selected_model']}")
-        emit(f"Bike CV accuracy   : {bike_summary['selected_cv_metrics']['run_accuracy']:.3f}")
-        emit(f"Bike CV macro-F1   : {bike_summary['selected_cv_metrics']['macro_f1']:.3f}")
+        emit(f"Suspension model   : {suspension_summary['selected_model']}")
+        emit(f"Suspension CV acc  : {suspension_summary['selected_cv_metrics']['run_accuracy']:.3f}")
+        emit(f"Suspension CV F1   : {suspension_summary['selected_cv_metrics']['macro_f1']:.3f}")
 
         if labels["run_id"].nunique() != 72:
             raise RuntimeError("Expected 72 local training-pool runs.")
         if selected_cv["run_id"].nunique() != 72:
             raise RuntimeError("Selected CV predictions should cover all 72 runs once.")
-        if bike_cv["run_id"].nunique() != 72:
-            raise RuntimeError("Selected bike-type CV predictions should cover all 72 runs once.")
+        if suspension_cv["run_id"].nunique() != 72:
+            raise RuntimeError("Selected suspension CV predictions should cover all 72 runs once.")
         if not bool(summary.get("selected_uses_rider_weight")):
             raise RuntimeError("Selected model should include rider_weight_kg.")
-        forbidden = set(bike_summary.get("forbidden_inputs", []))
-        if not {"bike", "pressure_bar", "rider_weight_kg"}.issubset(forbidden):
-            raise RuntimeError("Bike-type classifier summary should document forbidden leakage inputs.")
+        forbidden = set(suspension_summary.get("forbidden_inputs", []))
+        if not {"bike", "suspension_type", "pressure_bar", "rider_weight_kg"}.issubset(forbidden):
+            raise RuntimeError("Suspension classifier summary should document forbidden leakage inputs.")
 
     run_logged_action("06_check_outputs", action)
 
