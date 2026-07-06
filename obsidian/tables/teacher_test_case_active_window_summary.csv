@@ -1,0 +1,4 @@
+case_id,run_id,source_file,rider_weight_kg,table_ride_time_s,sample_rate_hz,raw_n_rows,active_start_idx,active_end_idx,active_n_rows,active_duration_s
+Case 1,TEST_CASE_1,Test data\Grp_2\Sagemotion\Case 1.csv,75.0,9.36,100.0,1702,711,1647,936,9.36
+Case 2,TEST_CASE_2,Test data\Grp_2\Sagemotion\Case 2.csv,100.0,8.61,100.0,1143,240,1101,861,8.61
+Case 3,TEST_CASE_3,Test data\Grp_2\Sagemotion\Case 3.csv,89.0,4.97,100.0,883,68,565,497,4.97

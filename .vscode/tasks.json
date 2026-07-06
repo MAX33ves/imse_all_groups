@@ -81,6 +81,15 @@
       "group": "test"
     },
     {
+      "label": "Training Pool 08 Predict Teacher Test Cases",
+      "type": "process",
+      "command": "${config:python.defaultInterpreterPath}",
+      "args": ["${workspaceFolder}\\06_reproducible_pipeline\\steps\\08_predict_teacher_test_cases.py"],
+      "options": { "cwd": "${workspaceFolder}\\06_reproducible_pipeline" },
+      "problemMatcher": [],
+      "group": "test"
+    },
+    {
       "label": "Training Pool Run Full Pipeline",
       "type": "process",
       "command": "${config:python.defaultInterpreterPath}",

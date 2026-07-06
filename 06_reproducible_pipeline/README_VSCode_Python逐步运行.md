@@ -139,3 +139,24 @@ Start with `steps/` because each script corresponds to one pipeline stage. Then 
 | `modeling.py` | FFNN candidates, group CV, final training / FFNN 候选、组级 CV、最终模型训练 |
 | `suspension_modeling.py` | Suspension classifier candidates, leakage-safe feature spaces, group CV, and final training / 悬挂类型分类候选、防泄漏特征空间、组级 CV 和最终训练 |
 | `plotting.py` | EDA and model figures / EDA 和模型图表 |
+
+## 7. Teacher Test Case Prediction / 老师测试集预测
+
+Step 08 is separate from the training-pool rerun because it depends on the instructor test data and the later rider-weight / ride-time metadata.
+
+Step 08 不放进 training-pool 一键重跑里，因为它依赖老师测试数据，以及后续提供的 rider-weight / ride-time 元数据。
+
+```powershell
+cd "C:\Users\user\Desktop\IMSE\imse_all_groups\06_reproducible_pipeline"
+python .\steps\08_predict_teacher_test_cases.py
+```
+
+Key outputs / 关键输出：
+
+| Output / 输出 | Path / 路径 |
+|---|---|
+| Final test-case predictions / 测试集最终预测 | `03_outputs/tables/teacher_test_case_final_predictions.csv` |
+| Pressure scenarios by bike context / 不同 bike context 下的胎压情景 | `03_outputs/tables/teacher_test_case_pressure_scenarios.csv` |
+| Suspension predictions / 悬挂类型预测 | `03_outputs/tables/teacher_test_case_suspension_predictions.csv` |
+| Case 3 nearest-run evidence / Case 3 最近训练样本证据 | `03_outputs/tables/teacher_test_case_nearest_training_runs.csv` |
+| Bilingual report / 双语报告 | `04_report/teacher_test_case_predictions_bilingual.md` |

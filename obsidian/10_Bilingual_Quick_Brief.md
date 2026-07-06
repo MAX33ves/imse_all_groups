@@ -75,3 +75,19 @@ The suspension classifier reaches 0.986 run-level CV accuracy and 0.986 macro-F1
 在 VSCode 打开 `C:\Users\user\Desktop\IMSE\imse_all_groups`，运行任务 `Training Pool Run Full Pipeline`。也可以按照 README 逐步运行 Step 00 到 Step 07，其中 Step 04b 会生成悬挂类型分类模型，Step 07 会生成老师视角审查补充报告。
 
 Open `C:\Users\user\Desktop\IMSE\imse_all_groups` in VSCode and run the task `Training Pool Run Full Pipeline`. You can also follow the README and run Steps 00 to 07 one by one. Step 04b generates the suspension classifier, and Step 07 generates the teacher-review supplement.
+
+## 9. 老师测试集结果 / Teacher Test Case Results
+
+老师后续提供了测试集的 rider weight 和 ride time，因此我们已经可以对 Case 1-3 进行最终模型推理。每个 case 都需要预测胎压和悬挂类型；只有 Case 3 额外需要说明它是否不同、如何不同，以及证据是什么。
+
+The instructor later supplied rider weight and ride time for the test cases, so the finalized models can now be applied to Cases 1-3. Every case requires both tire-pressure and suspension-type predictions; only Case 3 additionally requires a difference comment with evidence.
+
+| Case / Case | Predicted pressure / 预测胎压 | Predicted suspension / 预测悬挂类型 |
+|---|---:|---|
+| Case 1 | 2.658 bar | Front and rear Suspension |
+| Case 2 | 1.506 bar | No Suspension |
+| Case 3 | 2.292 bar | Front and rear Suspension |
+
+Case 3 的最近训练样本和类别中心都更接近 MTB / front-and-rear-suspension 类，但距离比 Case 1/2 更大，所以严谨结论是：Case 3 是新单车，信号响应不同于训练集中的普通重复样本，但最接近 MTB / 前后悬挂组。
+
+Case 3 is closest to the MTB / front-and-rear-suspension class by nearest training runs and class-centroid distance, but its distances are larger than those for Cases 1 and 2. The careful conclusion is that Case 3 is a new bicycle whose signal response differs from ordinary repeated training samples, while still being closest to the MTB / front-and-rear-suspension group.

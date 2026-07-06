@@ -14,6 +14,7 @@
 | `06_reproducible_pipeline/steps/05_train_final_model.py` | 最终模型 / final model training |
 | `06_reproducible_pipeline/steps/06_check_outputs.py` | 输出检查 / output checks |
 | `06_reproducible_pipeline/steps/07_teacher_review_checks.py` | 老师视角审查补充 / teacher-review supplement |
+| `06_reproducible_pipeline/steps/08_predict_teacher_test_cases.py` | 老师测试集预测 / teacher test-case predictions |
 
 ## Core Outputs / 核心输出
 
@@ -38,6 +39,11 @@
 | `04_report/training_pool_ffnn_cv_model_report_bilingual.md` | CV 模型报告 / CV model report |
 | `04_report/training_pool_ffnn_final_model_report_bilingual.md` | 最终模型报告 / final-model report |
 | `04_report/training_pool_suspension_classifier_report_bilingual.md` | 悬挂类型分类报告 / suspension classifier report |
+| `04_report/teacher_test_case_predictions_bilingual.md` | 老师测试集双语预测报告 / bilingual teacher test-case prediction report |
+| `03_outputs/tables/teacher_test_case_final_predictions.csv` | Case 1-3 最终预测 / final predictions for Cases 1-3 |
+| `03_outputs/tables/teacher_test_case_pressure_scenarios.csv` | 三种 bike context 下的胎压情景 / pressure scenarios under the three bike contexts |
+| `03_outputs/tables/teacher_test_case_suspension_predictions.csv` | 悬挂类型预测概率 / suspension prediction probabilities |
+| `03_outputs/tables/teacher_test_case_nearest_training_runs.csv` | Case 3 差异说明的最近训练样本证据 / nearest-training-run evidence for the Case 3 comment |
 | `05_teacher_review/teacher_review_audit_bilingual.md` | 老师视角审查补充报告 / teacher-review supplement |
 | `05_teacher_review/tables/*.csv` | 数据质量、误差结构、模型敏感性和课程缺口复核表 / review tables for data quality, error structure, model sensitivity, and requirement gaps |
 

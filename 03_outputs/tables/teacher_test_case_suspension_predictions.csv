@@ -1,0 +1,4 @@
+case_id,run_id,pred_suspension_type,pred_bike_context,suspension_confidence,proba_tyre_suspension,proba_no_suspension,proba_front_rear_suspension,n_windows
+Case 1,TEST_CASE_1,Front and rear Suspension,MTB,0.8079667568331035,0.037974807430803746,0.1540584357360928,0.8079667568331035,18
+Case 2,TEST_CASE_2,No Suspension,ISY,0.5530186357769821,0.33880882421731484,0.5530186357769821,0.10817254000570298,17
+Case 3,TEST_CASE_3,Front and rear Suspension,MTB,0.5785938909115753,0.4174156032894021,0.0039905057990226415,0.5785938909115753,9

@@ -30,6 +30,16 @@ Key local CV metrics:
 | Suspension-type CV accuracy | 0.986 |
 | Suspension-type CV macro-F1 | 0.986 |
 
+Teacher test-case predictions after the instructor supplied rider weight and ride-time metadata:
+
+老师提供测试集 rider weight 和 ride-time 元数据后的最终测试预测结果：
+
+| Case / Case | Predicted pressure / 预测胎压 | Predicted suspension / 预测悬挂类型 |
+|---|---:|---|
+| Case 1 | 2.658 bar | Front and rear Suspension |
+| Case 2 | 1.506 bar | No Suspension |
+| Case 3 | 2.292 bar | Front and rear Suspension |
+
 ## Data Scope / 数据范围
 
 All observed local G01-G06 P1-P4 runs are used as the training pool: 72 runs and 873 window-level feature rows.  
@@ -86,6 +96,15 @@ cd .\06_reproducible_pipeline
 python .\steps\06_check_outputs.py
 ```
 
+Run teacher test-case prediction after placing the instructor test data at `../Test data/Grp_2`:
+
+如果已将老师测试集放在 `../Test data/Grp_2`，可以运行测试集预测：
+
+```powershell
+cd .\06_reproducible_pipeline
+python .\steps\08_predict_teacher_test_cases.py
+```
+
 VSCode users can also run the configured tasks under `Tasks: Run Task`.  
 VSCode 用户也可以通过 `Tasks: Run Task` 运行已经配置好的任务。
 
@@ -95,11 +114,13 @@ VSCode 用户也可以通过 `Tasks: Run Task` 运行已经配置好的任务。
 - `04_report/training_pool_ffnn_cv_model_report_bilingual.md`
 - `04_report/training_pool_ffnn_final_model_report_bilingual.md`
 - `04_report/training_pool_suspension_classifier_report_bilingual.md`
+- `04_report/teacher_test_case_predictions_bilingual.md`
 - `05_teacher_review/teacher_review_audit_bilingual.md`
 - `obsidian/00_Index.md`
 
 ## Important Caveats / 重要注意事项
 
+- Teacher test-case pressure predictions use the bike context implied by the suspension classifier because the hidden test metadata does not provide bike labels. / 老师测试集没有提供 bike label，因此测试集胎压预测使用悬挂分类器推断出的 bike context。
 - CV metrics are local post-selection estimates, not hidden-test results. / CV 指标是本地模型选择后的泛化估计，不是隐藏测试集结果。
 - Training-pool fit metrics are not test metrics. / 训练池拟合指标不是测试指标。
 - The suspension classifier deliberately excludes `bike`, `suspension_type`, `pressure_bar`, `p_number`, `group`, `run_id`, file name, and `rider_weight_kg` from its inputs. / 悬挂类型分类模型刻意不使用 `bike`、`suspension_type`、`pressure_bar`、`p_number`、`group`、`run_id`、文件名和 `rider_weight_kg` 作为输入。

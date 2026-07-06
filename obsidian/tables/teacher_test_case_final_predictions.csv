@@ -1,0 +1,4 @@
+case_id,rider_weight_kg,table_ride_time_s,pred_pressure_bar,nearest_known_pressure_level_bar,pred_suspension_type,pred_bike_context_for_pressure_model,suspension_confidence,n_windows,pressure_note
+Case 1,75.0,9.36,2.6582182037393776,3.0,Front and rear Suspension,MTB,0.8079667568331035,18,Pressure is predicted using the suspension-classifier bike context because the hidden test sheet does not provide bike labels.
+Case 2,100.0,8.61,1.5058135448824208,2.0,No Suspension,ISY,0.5530186357769821,17,Pressure is predicted using the suspension-classifier bike context because the hidden test sheet does not provide bike labels.
+Case 3,89.0,4.97,2.29221994097427,2.0,Front and rear Suspension,MTB,0.5785938909115753,9,Pressure is predicted using the suspension-classifier bike context because the hidden test sheet does not provide bike labels.

@@ -1,0 +1,28 @@
+{
+  "metadata_source": "Instructor email screenshot supplied by user on 2026-07-06.",
+  "test_case_info": {
+    "Case 1": {
+      "rider_weight_kg": 75.0,
+      "table_ride_time_s": 9.36
+    },
+    "Case 2": {
+      "rider_weight_kg": 100.0,
+      "table_ride_time_s": 8.61
+    },
+    "Case 3": {
+      "rider_weight_kg": 89.0,
+      "table_ride_time_s": 4.97
+    }
+  },
+  "pressure_model": "ffnn_training_pool_ensemble_ens3_compact_weight_pca6_tanh_h8x4_a1_median",
+  "suspension_model": "suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1",
+  "important_caveat": "Pressure predictions use the suspension-classifier bike context because the hidden test sheet does not provide bike labels.",
+  "outputs": {
+    "final_predictions_csv": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\tables\\teacher_test_case_final_predictions.csv",
+    "pressure_scenarios_csv": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\tables\\teacher_test_case_pressure_scenarios.csv",
+    "suspension_predictions_csv": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\tables\\teacher_test_case_suspension_predictions.csv",
+    "nearest_training_runs_csv": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\tables\\teacher_test_case_nearest_training_runs.csv",
+    "suspension_centroid_distances_csv": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\03_outputs\\tables\\teacher_test_case_suspension_centroid_distances.csv",
+    "report_md": "C:\\Users\\user\\Desktop\\IMSE\\imse_all_groups\\04_report\\teacher_test_case_predictions_bilingual.md"
+  }
+}

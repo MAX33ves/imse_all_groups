@@ -20,6 +20,7 @@ Because the instructor still has a hidden test dataset, all locally observed G01
 | 悬挂类型分类模型：`suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`。 | Suspension classifier: `suspension_ffnn_ensemble_ens3_signal_full_pca10_tanh_h6_a1`. |
 | 悬挂类型 CV accuracy：0.986。 | Suspension CV accuracy: 0.986. |
 | 最终模型已用全部 72 个 run 重新训练并保存为 `.pkl`。 | The final model has been retrained on all 72 runs and saved as a `.pkl` file. |
+| 老师测试集已完成 Case 1-3 胎压和悬挂预测，Case 3 额外完成差异说明。 | Teacher test cases now have pressure and suspension predictions for Cases 1-3, plus the required Case 3 difference comment. |
 | 老师视角审查补充报告：`../05_teacher_review/teacher_review_audit_bilingual.md`。 | Teacher-review supplement: `../05_teacher_review/teacher_review_audit_bilingual.md`. |
 
 ## Suggested Reading Order / 建议阅读顺序
@@ -36,7 +37,8 @@ Because the instructor still has a hidden test dataset, all locally observed G01
 10. [[10_Bilingual_Quick_Brief]]
 11. [[11_Feature_Selection_Rationale]]
 12. [[12_Suspension_Classifier]]
-13. `../05_teacher_review/teacher_review_audit_bilingual.md`
+13. [[13_Teacher_Test_Case_Predictions]]
+14. `../05_teacher_review/teacher_review_audit_bilingual.md`
 
 ## Key Figures / 关键图
 

@@ -1,0 +1,10 @@
+case_id,bike_centroid,suspension_centroid,centroid_distance
+Case 1,FAT,Suspension because of tyres,6.303137420725168
+Case 1,MTB,Front and rear Suspension,7.068977430828537
+Case 1,ISY,No Suspension,7.807418202877908
+Case 2,FAT,Suspension because of tyres,7.394912090953309
+Case 2,ISY,No Suspension,8.592356136158331
+Case 2,MTB,Front and rear Suspension,11.705002422491498
+Case 3,MTB,Front and rear Suspension,16.818820594224725
+Case 3,FAT,Suspension because of tyres,19.068324741514008
+Case 3,ISY,No Suspension,22.43523190376567
